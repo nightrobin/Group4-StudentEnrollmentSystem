@@ -115,8 +115,8 @@ public class assessment extends JFrame {
                                     b3.addActionListener(new ActionListener() {
                                         @Override
                                         public void actionPerformed(ActionEvent actionEvent) {
-                                            //new register();
-                                            //f.setVisible(false);
+                                            new register();
+                                            f.setVisible(false);
                                         }
                                     });
 
