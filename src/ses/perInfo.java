@@ -1,5 +1,6 @@
 package ses;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,8 +14,9 @@ public class perInfo {
     private JFrame personal = new JFrame("Personal Information");
 
     public perInfo(){
-        personal.setSize(1500, 1000);
+        personal.setSize(1280, 780);
         personal.setLayout(null);
+        personal.getContentPane().setBackground(Color.decode("#f8f5f1"));
 
 
         Font label1 = new Font("Serif", Font.BOLD, 18);
@@ -27,43 +29,44 @@ public class perInfo {
         title.setSize(400, 50);
         title.setFont(label1);
 
+
         JLabel name = new JLabel("NAME");
-        name.setBounds(60, 60, 100, 25);
+        name.setBounds(30, 60, 100, 25);
         name.setSize(150, 40);
         name.setFont(label2);
 
         JTextField lName = new JTextField();
-        lName.setBounds(150, 65, 300, 30);
+        lName.setBounds(100, 65, 300, 30);
         lName.setFont(label3);
         lName.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel LastName = new JLabel("LAST NAME");
-        LastName.setBounds(255, 90, 200, 25);
+        LastName.setBounds(200, 90, 200, 25);
         LastName.setSize(150, 40);
         LastName.setFont(label2);
 
         JTextField fName = new JTextField();
-        fName.setBounds(480, 65, 300, 30);
+        fName.setBounds(420, 65, 300, 30);
         fName.setFont(label3);
         fName.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel FirstName = new JLabel("FIRST NAME");
-        FirstName.setBounds(585, 90, 320, 25);
+        FirstName.setBounds(520, 90, 320, 25);
         FirstName.setSize(150, 40);
         FirstName.setFont(label2);
 
         JTextField mName = new JTextField();
-        mName.setBounds(810, 65, 300, 30);
+        mName.setBounds(740, 65, 300, 30);
         mName.setFont(label3);
         mName.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel MiddleName = new JLabel("MIDDLE NAME");
-        MiddleName.setBounds(910, 90, 320, 25);
+        MiddleName.setBounds(840, 90, 320, 25);
         MiddleName.setSize(150, 40);
         MiddleName.setFont(label2);
 
         JComboBox<String> nExten = new JComboBox<>();
-        nExten.setBounds(1140, 65, 200, 30);
+        nExten.setBounds(1060, 65, 150, 30);
         nExten.setFont(label3);
         nExten.addItem("");
         nExten.addItem("Sr.");
@@ -73,31 +76,31 @@ public class perInfo {
         nExten.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel extensions = new JLabel("NAME EXTENSION");
-        extensions.setBounds(1165, 95, 150, 25);
+        extensions.setBounds(1065, 95, 150, 25);
         extensions.setFont(label2);
 
 
         JLabel lr = new JLabel("LEARNER REFERENCE NUMBER");
-        lr.setBounds(75, 148, 312, 25);
+        lr.setBounds(40, 140, 312, 25);
         lr.setFont(label2);
 
         JTextField LRN = new JTextField();
-        LRN.setBounds(350, 145, 300, 30);
+        LRN.setBounds(300, 140, 300, 30);
         LRN.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         LRN.setFont(label3);
 
         JLabel sek = new JLabel("SEX");
-        sek.setBounds(900, 140, 50, 30);
+        sek.setBounds(840, 140, 50, 30);
         sek.setFont(label2);
 
 
         JRadioButton ml = new JRadioButton("MALE");
-        ml.setBounds(1030, 140, 100, 30);
+        ml.setBounds(910, 140, 100, 30);
         ml.setFont(label2);
         ml.setBorderPainted(true);
         JRadioButton fl = new JRadioButton("FEMALE");
-        fl.setBounds(1130, 140, 100, 30);
+        fl.setBounds(1010, 140, 100, 30);
         fl.setFont(label2);
         fl.setBorderPainted(true);
         ButtonGroup sex = new ButtonGroup();
@@ -105,11 +108,11 @@ public class perInfo {
         sex.add(fl);
 
         JLabel bd = new JLabel("BIRTHDATE (YEAR/MONTH/DAY)");
-        bd.setBounds(75, 200, 260, 25);
+        bd.setBounds(40, 180, 260, 25);
         bd.setFont(label2);
 
         JTextField db = new JTextField();
-        db.setBounds(350,200,300,30);
+        db.setBounds(300,180,300,30);
         Date b = new Date(121, 5, 6);
         SimpleDateFormat b1 = new SimpleDateFormat(" yyyy-MM-dd");
         db.setText(b1.format(b));
@@ -117,61 +120,61 @@ public class perInfo {
         db.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel age = new JLabel("AGE");
-        age.setBounds(900, 200, 150, 25);
+        age.setBounds(840, 180, 150, 25);
         age.setFont(label2);
 
         JTextField age1 = new JTextField();
-        age1.setBounds(1030, 200, 300,30);
+        age1.setBounds(910, 180, 300,30);
         age1.setFont(label3);
         age1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel add = new JLabel("ADDRESS");
-        add.setBounds(75, 260,150,25);
+        add.setBounds(40, 220,150,25);
         add.setFont(label2);
 
         JTextField add1 = new JTextField();
-        add1.setBounds(350, 260, 300, 30);
+        add1.setBounds(300, 220, 300, 30);
         add1.setFont(label3);
         add1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel height = new JLabel("HEIGHT (cm)");
-        height.setBounds(900, 260, 100, 25);
+        height.setBounds(780, 220, 100, 25);
         height.setFont(label2);
 
         JTextField height1 = new JTextField();
-        height1.setBounds(1030, 260, 300, 30);
+        height1.setBounds(910, 220, 300, 30);
         height1.setFont(label3);
         height1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel citi = new JLabel("CITIZENSHIP");
-        citi.setBounds(75, 320, 100, 25);
+        citi.setBounds(40, 260, 100, 25);
         citi.setFont(label2);
 
         JTextField citi1 = new JTextField();
-        citi1.setBounds(350, 320, 300, 30);
+        citi1.setBounds(300, 260, 300, 30);
         citi1.setFont(label3);
         citi1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel wei = new JLabel("WEIGHT (kg)");
-        wei.setBounds(900, 320, 100, 25);
+        wei.setBounds(780, 260, 100, 25);
         wei.setFont(label2);
 
         JTextField wei1 = new JTextField();
-        wei1.setBounds(1030, 320, 300, 30);
+        wei1.setBounds(910, 260, 300, 30);
         wei1.setFont(label3);
         wei1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel rel = new JLabel("RELIGION");
         rel.setFont(label2);
-        rel.setBounds(75, 380, 100, 25);
+        rel.setBounds(40, 300, 100, 25);
 
         JTextField rel1 = new JTextField();
-        rel1.setBounds(350, 380, 300, 25);
+        rel1.setBounds(300, 300, 300, 25);
         rel1.setFont(label3);
         rel1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel cs = new JLabel("CIVIL STATUS");
-        cs.setBounds(900, 380, 120, 25);
+        cs.setBounds(770, 300, 120, 25);
         cs.setFont(label2);
 
         JComboBox <String> cs1 = new JComboBox<>();
@@ -179,84 +182,84 @@ public class perInfo {
         cs1.addItem("Married");
         cs1.addItem("Divorced");
         cs1.addItem("Widowed");
-        cs1.setBounds(1030, 380, 300, 30);
+        cs1.setBounds(910, 300, 300, 30);
         cs1.setFont(label2);
         cs1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel cp = new JLabel("CELLPHONE NUMBER");
         cp.setFont(label2);
-        cp.setBounds(75, 440, 200, 25);
+        cp.setBounds(40, 340, 200, 25);
 
         JTextField cp1 = new JTextField();
-        cp1.setBounds(350, 440, 300, 30);
+        cp1.setBounds(300, 340, 300, 30);
         cp1.setFont(label3);
         cp1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel ea = new JLabel("EMAIL ADDRESS");
-        ea.setBounds(875, 440, 150, 25);
+        ea.setBounds(750, 340, 150, 25);
         ea.setFont(label2);
 
         JTextField ea1 = new JTextField();
-        ea1.setBounds(1030, 440, 300, 30);
+        ea1.setBounds(910, 340, 300, 30);
         ea1.setFont(label3);
         ea1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
         JLabel fbg = new JLabel("FAMILY BACKGROUND");
         fbg.setFont(label1);
         fbg.setSize(400, 50);
-        fbg.setBounds(20, 500, 400, 50);
+        fbg.setBounds(20, 370, 400, 50);
 
         JLabel ft = new JLabel("FATHER'S NAME");
-        ft.setBounds(75, 560, 200, 25);
+        ft.setBounds(40, 420, 200, 25);
         ft.setFont(label2);
 
         JTextField ft1 = new JTextField();
-        ft1.setBounds(350, 560, 300, 30);
+        ft1.setBounds(300, 420, 300, 30);
         ft1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         ft1.setFont(label3);
 
         JLabel mt = new JLabel("MOTHER'S NAME");
-        mt.setBounds(880, 560, 200, 25);
+        mt.setBounds(750, 420, 200, 25);
         mt.setFont(label2);
 
         JTextField mt1 = new JTextField();
-        mt1.setBounds(1030, 560, 300, 30);
+        mt1.setBounds(910, 420, 300, 30);
         mt1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         mt1.setFont(label3);
 
         JLabel fpn = new JLabel("CONTACT NUMBER");
-        fpn.setBounds(75, 620, 200, 25);
+        fpn.setBounds(40, 460, 200, 25);
         fpn.setFont(label2);
 
         JTextField fpn1 = new JTextField();
-        fpn1.setBounds(350, 620, 300, 30);
+        fpn1.setBounds(300, 460, 300, 30);
         fpn1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         fpn1.setFont(label3);
 
         JLabel mpn = new JLabel("CONTACT NUMBER");
-        mpn.setBounds(860, 620, 200, 25);
+        mpn.setBounds(730, 460, 200, 25);
         mpn.setFont(label2);
 
         JTextField mpn1 = new JTextField();
-        mpn1.setBounds(1030, 620, 300, 30);
+        mpn1.setBounds(910, 460, 300, 30);
         mpn1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         mpn1.setFont(label3);
 
         JLabel gbg = new JLabel("GUARDIAN'S NAME");
-        gbg.setBounds(75, 680, 200, 25);
+        gbg.setBounds(40, 500, 200, 25);
         gbg.setFont(label2);
 
         JTextField gbg1 = new JTextField();
-        gbg1.setBounds(350, 680, 300, 30);
+        gbg1.setBounds(300, 500, 300, 30);
         gbg1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         gbg1.setFont(label3);
 
         JLabel gpn = new JLabel("GUARDIAN'S CONTACT");
-        gpn.setBounds(835, 680, 200, 25);
+        gpn.setBounds(700, 500, 200, 25);
         gpn.setFont(label3);
 
         JTextField gpn1 = new JTextField();
-        gpn1.setBounds(1030, 680, 300, 30);
+        gpn1.setBounds(910, 500, 300, 30);
         gpn1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         gpn1.setFont(label3);
 
@@ -264,26 +267,26 @@ public class perInfo {
         JLabel educ = new JLabel("EDUCATIONAL BACKGROUND");
         educ.setFont(label1);
         educ.setSize(400, 50);
-        educ.setBounds(20, 740, 400, 50);
+        educ.setBounds(20, 530, 400, 50);
 
         JLabel catt = new JLabel("CATEGORY");
-        catt.setBounds(75, 780, 100, 25);
+        catt.setBounds(40, 580, 100, 25);
         catt.setFont(label2);
 
         JRadioButton k12 = new JRadioButton("K-12 ");
-        k12.setBounds(350, 780, 70, 30);
+        k12.setBounds(300, 580, 70, 30);
         k12.setFont(label2);
         k12.setBorderPainted(true);
         JRadioButton oc = new JRadioButton("OLD CURRICULUM");
-        oc.setBounds(420, 780, 200, 30);
+        oc.setBounds(370, 580, 200, 30);
         oc.setFont(label2);
         oc.setBorderPainted(true);
         JRadioButton als = new JRadioButton("ALS");
-        als.setBounds(620, 780, 65, 30);
+        als.setBounds(570, 580, 65, 30);
         als.setFont(label2);
         als.setBorderPainted(true);
         JRadioButton wbg = new JRadioButton("WITH COLLEGE BACKGROUND");
-        wbg.setBounds(685, 780, 280, 30);
+        wbg.setBounds(635, 580, 280, 30);
         wbg.setFont(label2);
         wbg.setBorderPainted(true);
         ButtonGroup cat = new ButtonGroup();
@@ -293,48 +296,50 @@ public class perInfo {
         cat.add(wbg);
 
         JLabel lsa = new JLabel("LAST SCHOOL ATTENDED");
-        lsa.setBounds(75, 840, 220, 25);
+        lsa.setBounds(40, 620, 220, 25);
         lsa.setFont(label2);
 
         JComboBox<String> lsa1 = new JComboBox<>();
         lsa1.addItem("SENIOR HIGH SCHOOL");
         lsa1.addItem("HIGH SCHOOL (OLD CURR.)");
         lsa1.addItem("ALS");
-        lsa1.setBounds(350, 840, 300, 25);
+        lsa1.setBounds(300, 620, 300, 25);
         lsa1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         lsa1.setFont(label3);
 
         JLabel lsa2 = new JLabel("SCHOOL NAME");
-        lsa2.setBounds(890, 840, 175, 25);
+        lsa2.setBounds(750, 620, 175, 25);
         lsa2.setFont(label2);
 
         JTextField lsa3 = new JTextField();
-        lsa3.setBounds(1030, 840, 300, 30);
+        lsa3.setBounds(910, 620, 300, 30);
         lsa3.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         lsa3.setFont(label3);
 
         JLabel lsa4 = new JLabel("SCHOOL ADDRESS");
-        lsa4.setBounds(75, 880, 175, 25);
+        lsa4.setBounds(40, 660, 175, 25);
         lsa4.setFont(label2);
 
         JTextField lsa5 = new JTextField();
-        lsa5.setBounds(350, 880, 300, 30);
+        lsa5.setBounds(300, 660, 300, 30);
         lsa5.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         lsa5.setFont(label3);
 
         JLabel lsa6 = new JLabel("AVERAGE");
-        lsa6.setBounds(900, 880, 160, 25);
+        lsa6.setBounds(790, 660, 160, 25);
         lsa6.setFont(label2);
 
         JTextField lsa7 = new JTextField();
-        lsa7.setBounds(1030, 880, 300, 30);
+        lsa7.setBounds(910, 660, 300, 30);
         lsa7.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         lsa7.setFont(label3);
 
 
         JButton next = new JButton("NEXT");
-        next.setBounds(1380, 900, 80, 40);
-        next.setFont(label2);
+        next.setBounds(1150, 700, 100, 30);
+        next.setFont(label1);
+        next.setForeground(Color.decode("#293b5f"));
+        next.setBackground(Color.decode("#dbe6fd"));
 
 
         next.addActionListener(new ActionListener() {
@@ -520,4 +525,3 @@ public class perInfo {
 
 
 }
-
