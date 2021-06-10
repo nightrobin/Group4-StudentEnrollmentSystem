@@ -5,11 +5,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.font.TextAttribute;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class perInfo {
+
 
     private JFrame personal = new JFrame("Personal Information");
 
@@ -41,17 +44,18 @@ public class perInfo {
         lName.setFont(label2);
         lName.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
-        JLabel LastName = new JLabel("LAST NAME");
+        JLabel LastName = new JLabel("LAST NAME*");
         LastName.setBounds(200, 65, 200, 25);
         LastName.setSize(150, 40);
         LastName.setFont(label2);
+
 
         JTextField fName = new JTextField();
         fName.setBounds(420, 45, 300, 30);
         fName.setFont(label2);
         fName.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
-        JLabel FirstName = new JLabel("FIRST NAME");
+        JLabel FirstName = new JLabel("FIRST NAME*");
         FirstName.setBounds(520, 65, 320, 25);
         FirstName.setSize(150, 40);
         FirstName.setFont(label2);
@@ -81,7 +85,7 @@ public class perInfo {
         extensions.setFont(label2);
 
 
-        JLabel lr = new JLabel("LEARNER REFERENCE NUMBER");
+        JLabel lr = new JLabel("LEARNER REFERENCE NUMBER*");
         lr.setBounds(40, 110, 312, 25);
         lr.setFont(label2);
 
@@ -91,7 +95,7 @@ public class perInfo {
 
         LRN.setFont(label2);
 
-        JLabel sek = new JLabel("SEX");
+        JLabel sek = new JLabel("SEX*");
         sek.setBounds(840, 110, 50, 30);
         sek.setFont(label2);
 
@@ -108,7 +112,7 @@ public class perInfo {
         sex.add(ml);
         sex.add(fl);
 
-        JLabel bd = new JLabel("BIRTHDATE (YEAR/MONTH/DAY)");
+        JLabel bd = new JLabel("BIRTHDATE (YEAR/MONTH/DAY)*");
         bd.setBounds(40, 150, 260, 25);
         bd.setFont(label2);
 
@@ -120,7 +124,7 @@ public class perInfo {
         db.setFont(label2);
         db.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
-        JLabel age = new JLabel("AGE");
+        JLabel age = new JLabel("AGE*");
         age.setBounds(840, 150, 150, 25);
         age.setFont(label2);
 
@@ -129,7 +133,7 @@ public class perInfo {
         age1.setFont(label2);
         age1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
-        JLabel add = new JLabel("ADDRESS");
+        JLabel add = new JLabel("ADDRESS*");
         add.setBounds(40, 190,150,25);
         add.setFont(label2);
 
@@ -138,7 +142,7 @@ public class perInfo {
         add1.setFont(label2);
         add1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
-        JLabel height = new JLabel("HEIGHT (cm)");
+        JLabel height = new JLabel("HEIGHT (cm)*");
         height.setBounds(780, 190, 100, 25);
         height.setFont(label2);
 
@@ -147,7 +151,7 @@ public class perInfo {
         height1.setFont(label2);
         height1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
-        JLabel citi = new JLabel("CITIZENSHIP");
+        JLabel citi = new JLabel("CITIZENSHIP*");
         citi.setBounds(40, 230, 100, 25);
         citi.setFont(label2);
 
@@ -156,7 +160,7 @@ public class perInfo {
         citi1.setFont(label2);
         citi1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
-        JLabel wei = new JLabel("WEIGHT (kg)");
+        JLabel wei = new JLabel("WEIGHT (kg)*");
         wei.setBounds(780, 230, 100, 25);
         wei.setFont(label2);
 
@@ -174,7 +178,7 @@ public class perInfo {
         rel1.setFont(label2);
         rel1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
-        JLabel cs = new JLabel("CIVIL STATUS");
+        JLabel cs = new JLabel("CIVIL STATUS*");
         cs.setBounds(770, 270, 120, 25);
         cs.setFont(label2);
 
@@ -196,7 +200,7 @@ public class perInfo {
         cp1.setFont(label2);
         cp1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 
-        JLabel ea = new JLabel("EMAIL ADDRESS");
+        JLabel ea = new JLabel("EMAIL ADDRESS*");
         ea.setBounds(750, 310, 150, 25);
         ea.setFont(label2);
 
@@ -210,7 +214,7 @@ public class perInfo {
         fbg.setSize(400, 50);
         fbg.setBounds(20, 330, 400, 50);
 
-        JLabel ft = new JLabel("FATHER'S NAME");
+        JLabel ft = new JLabel("FATHER'S NAME*");
         ft.setBounds(40, 370, 200, 25);
         ft.setFont(label2);
 
@@ -219,7 +223,7 @@ public class perInfo {
         ft1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         ft1.setFont(label2);
 
-        JLabel mt = new JLabel("MOTHER'S NAME");
+        JLabel mt = new JLabel("MOTHER'S NAME*");
         mt.setBounds(750, 370, 200, 25);
         mt.setFont(label2);
 
@@ -228,7 +232,7 @@ public class perInfo {
         mt1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         mt1.setFont(label2);
 
-        JLabel fpn = new JLabel("CONTACT NUMBER");
+        JLabel fpn = new JLabel("CONTACT NUMBER*");
         fpn.setBounds(40, 410, 200, 25);
         fpn.setFont(label2);
 
@@ -237,7 +241,7 @@ public class perInfo {
         fpn1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         fpn1.setFont(label2);
 
-        JLabel mpn = new JLabel("CONTACT NUMBER");
+        JLabel mpn = new JLabel("CONTACT NUMBER*");
         mpn.setBounds(730, 410, 200, 25);
         mpn.setFont(label2);
 
@@ -270,7 +274,7 @@ public class perInfo {
         educ.setSize(400, 50);
         educ.setBounds(20, 470, 400, 50);
 
-        JLabel catt = new JLabel("CATEGORY");
+        JLabel catt = new JLabel("CATEGORY*");
         catt.setBounds(40, 510, 100, 25);
         catt.setFont(label2);
 
@@ -296,7 +300,7 @@ public class perInfo {
         cat.add(als);
         cat.add(wbg);
 
-        JLabel lsa = new JLabel("LAST SCHOOL ATTENDED");
+        JLabel lsa = new JLabel("LAST SCHOOL ATTENDED*");
         lsa.setBounds(40, 550, 220, 25);
         lsa.setFont(label2);
 
@@ -308,7 +312,7 @@ public class perInfo {
         lsa1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         lsa1.setFont(label2);
 
-        JLabel lsa2 = new JLabel("SCHOOL NAME");
+        JLabel lsa2 = new JLabel("SCHOOL NAME*");
         lsa2.setBounds(750, 550, 175, 25);
         lsa2.setFont(label2);
 
@@ -317,7 +321,7 @@ public class perInfo {
         lsa3.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         lsa3.setFont(label2);
 
-        JLabel lsa4 = new JLabel("SCHOOL ADDRESS");
+        JLabel lsa4 = new JLabel("SCHOOL ADDRESS*");
         lsa4.setBounds(40, 590, 175, 25);
         lsa4.setFont(label2);
 
@@ -326,7 +330,7 @@ public class perInfo {
         lsa5.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         lsa5.setFont(label2);
 
-        JLabel lsa6 = new JLabel("AVERAGE");
+        JLabel lsa6 = new JLabel("AVERAGE*");
         lsa6.setBounds(790, 590, 160, 25);
         lsa6.setFont(label2);
 
@@ -335,6 +339,13 @@ public class perInfo {
         lsa7.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         lsa7.setFont(label2);
 
+        Font label3  = new Font("SansSerif", Font.ITALIC, 15);
+
+        JLabel nt = new JLabel();
+        nt.setBounds(60, 650, 500, 20);
+        nt.setFont(label3);
+        nt.setText("<html><u>Note: Kindly dpuble check your infotmation. All fiedls with '*' are required.</u></html>");
+        personal.add(nt);
 
         JButton next = new JButton("NEXT");
         next.setBounds(1150, 635, 100, 30);
@@ -347,45 +358,67 @@ public class perInfo {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (fName.getText().isEmpty() || lName.getText().isEmpty() || LRN.getText().isEmpty() ) {
-                    showMessageDialog(null, "Field/s is/are empty");
+
+                String lstname = lName.getText();
+                String frstname = fName.getText();
+                String mddlename = mName.getText();
+                String nameExten = String.valueOf(nExten.getSelectedItem());
+                long lren = Long.parseLong(LRN.getText());
+                String sexx = null;
+                if (ml.isSelected()){
+                    sexx = "Male";
+                }
+                else if (fl.isSelected()){
+                    sexx = "Female";
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Required Field/s is/are empty");
+                }
+                String sex1 = sexx;
+                String dbb = db.getText();
+                String bpp = add1.getText();
+                String agee1 = age.getText();
+                String hh =  height1.getText();
+                String citizen = citi1.getText();
+                String w = wei1.getText();
+                String reli1 = rel1.getText();
+                String civil = String.valueOf(cs1.getSelectedItem());
+                String cnum = cp1.getText();
+                String em = ea1.getText();
+                String fath = ft1.getText();
+                String moth = mt1.getText();
+                String fathnum = fpn1.getText();
+                String mothnum = mpn1.getText();
+                String guardian = gbg1.getText();
+                String gum = gpn1.getText();
+                String categg = null;
+                if (k12.isSelected()){
+                    categg = "K-12";
+                }
+                else if (oc.isSelected()){
+                    categg = "Old Curriculum";
+                }else if (als.isSelected()){
+                    categg = "ALS";
+                }else if (wbg.isSelected()){
+                    categg = "With College Background";
+                } else {
+                    JOptionPane.showMessageDialog(null, "Required Field/s is/are empty");
+                }
+                String categ1 = categg;
+                String cat = String.valueOf(lsa1.getSelectedItem());
+                String schname = lsa3.getText();
+                String schadd= lsa5.getText();
+                String av = lsa7.getText();
+
+                if (lstname.isEmpty() || frstname.isEmpty()  || dbb.isEmpty() || agee1.isEmpty() || hh.isEmpty() || citizen.isEmpty() || w.isEmpty() || civil.isEmpty() || em.isEmpty() ||
+                        fath.isEmpty() || moth.isEmpty() || fathnum.isEmpty() || mothnum.isEmpty() || cat.isEmpty() || schname.isEmpty() || schadd.isEmpty() || av.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Required Field/s is/are empty");
                 } else {
 
-
-                    String lstname = lName.getText();
-                    String frstname = fName.getText();
-                    String mddlename = mName.getText();
-                    String nameExten = String.valueOf(nExten.getSelectedItem());
-                    long lren = Long.parseLong(LRN.getText());
-                    String sexx = null;
-                    if (ml.isSelected()){
-                        sexx = "Male";
-                    }
-                    else if (fl.isSelected()){
-                        sexx = "Female";
-                    }
-                    String sex1 = sexx;
-                    String dbb = db.getText();
                     int agee = Integer.parseInt(age1.getText());
-                    String bpp = add1.getText();
                     int heightt = Integer.parseInt(height1.getText());
-                    String citizen = citi1.getText();
                     int weigh = Integer.parseInt(wei1.getText());
-                    String reli1 = rel1.getText();
-                    String civil = String.valueOf(cs1.getSelectedItem());
-                    String cnum = cp1.getText();
-                    String em = ea1.getText();
-                    String fath = ft1.getText();
-                    String moth = mt1.getText();
-                    String fathnum = fpn1.getText();
-                    String mothnum = mpn1.getText();
-                    String guardian = gbg1.getText();
-                    String gum = gpn1.getText();
-                    String cat = String.valueOf(lsa1.getSelectedItem());
-                    String schname = lsa3.getText();
-                    String schadd= lsa5.getText();
                     int average = Integer.parseInt(lsa7.getText());
-
 
                     Connection con1;
                     PreparedStatement insert;
@@ -405,7 +438,7 @@ public class perInfo {
 
                             insert = con1.prepareStatement("insert into " +
                                     "personalInfo(lastname, firstname, middlename, nExtension, lrn, seks, birthdate, age, address, height, citizenship, weight, religion, civil_status, cpnum, email, fathername, mothername,fathernum, mothernum, gname," +
-                                    "gnum, schcategory,lschname,lschadd,ave)" + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                                    "gnum, categ, schcategory,lschname,lschadd,ave)" + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
                             insert.setString(1, lstname);
                             insert.setString(2, frstname);
@@ -429,13 +462,14 @@ public class perInfo {
                             insert.setString(20, mothnum);
                             insert.setString(21, guardian);
                             insert.setString(22, gum);
-                            insert.setString(23, cat);
-                            insert.setString(24,schname);
-                            insert.setString(25, schadd);
-                            insert.setInt(26, average);
+                            insert.setString(23, categ1);
+                            insert.setString(24,cat);
+                            insert.setString(25, schname);
+                            insert.setString(26, schadd);
+                            insert.setInt(27, average);
                             insert.executeUpdate();
 
-                            new Enroll();
+                            new Enroll(lren);
                             personal.dispose();
 
                         }
@@ -518,9 +552,10 @@ public class perInfo {
         personal.setVisible(true);
     }
 
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         new perInfo();
+
     }
 
 
