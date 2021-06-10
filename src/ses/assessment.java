@@ -58,11 +58,11 @@ public class assessment extends JFrame {
                     topPanel.setBackground(Color.WHITE);
 
                         JLabel user = new JLabel("Logged in as Student No.");
-                        user.setBounds(1000, 0, 300, 30);
+                        user.setBounds(1040, 0, 300, 30);
                         f.add(user);
 
                         studentNum = new JLabel("");
-                        studentNum.setBounds(1000, 0, 300, 30);
+                        studentNum.setBounds(1190, 0, 300, 30);
                         f.add(studentNum);
 
 
