@@ -4,14 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.*;
 
-public class register extends JFrame{
+public class enrollProcess extends JFrame{
     JMenu menu;
     JMenuItem i1, i2, i3;
     public JLabel studentNum;
 
-    public register(){
+    public enrollProcess(){
 
         JFrame f = new JFrame("Enrollment System");
             JPanel mainPanel=new JPanel();
@@ -180,6 +179,6 @@ public class register extends JFrame{
 
     public static void main(String args[])
     {
-        new register();
+        new enrollProcess();
     }
 }

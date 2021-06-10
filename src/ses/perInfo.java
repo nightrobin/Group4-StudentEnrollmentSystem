@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.font.TextAttribute;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 
@@ -469,7 +468,7 @@ public class perInfo {
                             insert.setInt(27, average);
                             insert.executeUpdate();
 
-                            new Enroll(lren);
+                            new chooseCourse(lren);
                             personal.dispose();
 
                         }

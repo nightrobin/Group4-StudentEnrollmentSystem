@@ -9,10 +9,10 @@ import java.util.Random;
 
 import static javax.swing.JOptionPane.OK_CANCEL_OPTION;
 
-public class Enroll {
+public class chooseCourse {
     private JFrame en = new JFrame("Enrollment");
 
-    public Enroll(long lren){
+    public chooseCourse(long lren){
         en.setSize(1280,720);
         en.getContentPane().setBackground(Color.decode("#cdc7be"));
         en.setLayout(null);

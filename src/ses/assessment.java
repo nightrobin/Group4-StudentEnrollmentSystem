@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.*;
 
 public class assessment extends JFrame {
     JMenu menu;
@@ -115,7 +114,7 @@ public class assessment extends JFrame {
                                     b3.addActionListener(new ActionListener() {
                                         @Override
                                         public void actionPerformed(ActionEvent actionEvent) {
-                                            new register();
+                                            new enrollProcess();
                                             f.setVisible(false);
                                         }
                                     });
