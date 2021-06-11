@@ -84,12 +84,41 @@ public class changePassword extends JFrame{
                             }
                         });
 
-                    JButton b2 = new JButton("CHANGE PASSWORD");
+                    JButton b2 = new JButton("UPDATE INFORMATION");
                     b2.setForeground(Color.WHITE);
                     b2.setBounds(   9, 100, 250, 65);
                     b2.setBackground(Color.decode("#47597e"));
                     b2.setFont(new Font("Sans", Font.BOLD, 17));
                     f.add(b2);
+                        b1.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent actionEvent) {
+                                //new viewInfo();
+                                //f.setVisible(false);
+                            }
+                        });
+
+                    JButton b3 = new JButton("CHANGE PASSWORD");
+                    b3.setForeground(Color.WHITE);
+                    b3.setBounds(   9, 180, 250, 65);
+                    b3.setBackground(Color.decode("#47597e"));
+                    b3.setFont(new Font("Sans", Font.BOLD, 17));
+                    f.add(b3);
+
+                    JButton backButton = new JButton("BACK");
+                    backButton.setForeground(Color.WHITE);
+                    backButton.setBounds(   9, 615, 250, 35);
+                    backButton.setBackground(Color.decode("#b2ab8c"));
+                    backButton.setForeground(Color.WHITE);
+                    backButton.setFont(new Font("Sans", Font.BOLD, 17));
+                    f.add(backButton);
+                        backButton.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent actionEvent) {
+                                //new homePage();
+                                //f.setVisible(false);
+                            }
+                        });
 
 
             JPanel bodyPanel = new JPanel();
