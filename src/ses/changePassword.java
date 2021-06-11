@@ -90,10 +90,10 @@ public class changePassword extends JFrame{
                     b2.setBackground(Color.decode("#47597e"));
                     b2.setFont(new Font("Sans", Font.BOLD, 17));
                     f.add(b2);
-                        b1.addActionListener(new ActionListener() {
+                        b2.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent actionEvent) {
-                                //new viewInfo();
+                                //new updateInfo();
                                 //f.setVisible(false);
                             }
                         });
