@@ -4,14 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.*;
 
 public class viewInfo extends JFrame{
     JMenu menu;
     JMenuItem i1, i2, i3;
     public JLabel studentNum;
 
-    public viewInfo(){
+    public viewInfo(String studentNum){
 
         JFrame f = new JFrame("Enrollment System");
             JPanel mainPanel=new JPanel();
@@ -38,8 +37,8 @@ public class viewInfo extends JFrame{
                     i3 = new JMenuItem("Logout");
                     i3.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                            //new login();
-                            //f.setVisible(false);
+                            new login();
+                            f.dispose();
                         }
                     });
 
@@ -56,14 +55,9 @@ public class viewInfo extends JFrame{
                 topPanel.setBounds(270,0,1280,70);
                 topPanel.setBackground(Color.WHITE);
 
-                    JLabel user = new JLabel("Logged in as Student No.");
+                    JLabel user = new JLabel("Logged in as Student No. " + studentNum);
                     user.setBounds(1000, 0, 300, 30);
                     f.add(user);
-
-                    //student number retrieve from the login
-                    studentNum = new JLabel("");
-                    studentNum.setBounds(1000, 0, 300, 30);
-                    f.add(studentNum);
 
                     JPanel menuPanel = new JPanel();
                     menuPanel.setBounds(0,0,270,720);
@@ -99,8 +93,8 @@ public class viewInfo extends JFrame{
                             b3.addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent actionEvent) {
-                                    new changePassword();
-                                    f.setVisible(false);
+                                    new changePassword(studentNum);
+                                    f.dispose();
                                 }
                             });
 
@@ -114,8 +108,8 @@ public class viewInfo extends JFrame{
                         backButton.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent actionEvent) {
-                                //new homePage();
-                                //f.setVisible(false);
+                                new logIntabs(studentNum);
+                                f.dispose();
                             }
                         });
 
@@ -340,12 +334,11 @@ public class viewInfo extends JFrame{
         f.setVisible(true);
         f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //f.setResizable(false);
+        f.setResizable(false);
     }
 
     public static void main(String args[])
     {
 
-        new viewInfo();
     }
 }

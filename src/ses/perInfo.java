@@ -346,11 +346,29 @@ public class perInfo {
         nt.setText("<html><u>Note: Kindly double check your information. All fields with '*' are required.</u></html>");
         personal.add(nt);
 
+        JButton bck = new JButton("Back to Log In");
+        bck.setBounds(1025, 635, 115, 30);
+        bck.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
+        bck.setBackground(Color.decode("#cdc7be"));
+        bck.setForeground(Color.decode("#293b5f"));
+        bck.setFont(label2);
+        personal.add(bck);
+
+        bck.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new login();
+                personal.dispose();
+            }
+        });
+
+
         JButton next = new JButton("NEXT");
         next.setBounds(1150, 635, 100, 30);
         next.setFont(label1);
+        next.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         next.setForeground(Color.decode("#293b5f"));
-        next.setBackground(Color.decode("#dbe6fd"));
+        next.setBackground(Color.decode("#cdc7be"));
 
 
         next.addActionListener(new ActionListener() {

@@ -4,14 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
-public class login extends JFrame {
+public class login{
 
     private JFrame f;
 
     public login(){
         f = new JFrame("Enrollment System");
-        JPanel mainPanel=new JPanel();
+        JPanel mainPanel = new JPanel();
         mainPanel.setBounds(0,0,1280,720);
 
         JPanel topPanel = new JPanel();
@@ -41,7 +42,7 @@ public class login extends JFrame {
         PWlabel.setForeground(Color.decode("#293b5f"));
         f.add(PWlabel);
 
-        JTextField PWField = new JTextField();
+        JPasswordField PWField = new JPasswordField();
         PWField.setBounds(900, 320, 300, 30 );
         f.add(PWField);
 
@@ -55,6 +56,42 @@ public class login extends JFrame {
 
             }
         });
+
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String sid = SNField.getText();
+                String ps = PWField.getText();
+
+                if (sid.isEmpty() || ps.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Required Field/s is/are Empty.");
+                }
+                else {
+                    Connection con1;
+                    Statement st;
+                    try {
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        con1 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
+                        st = con1.createStatement();
+
+                        String sql = "SELECT * FROM personalInfo WHERE studID = '" + sid + "' AND password = '" + ps + "'";
+                        ResultSet rs = st.executeQuery(sql);
+
+                        if (rs.next()) {
+                            new logIntabs(rs.getString("studID"));
+                            f.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Student Number or Password Incorrect");
+                        }
+
+                    } catch (ClassNotFoundException | SQLException classNotFoundException) {
+
+                    }
+                }
+            }
+        });
+
 
         JButton registerButton = new JButton("REGISTER");
         registerButton.setBounds(900, 420, 300, 30);
@@ -106,7 +143,8 @@ public class login extends JFrame {
         f.setLayout(null);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
-        f.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        f.setResizable(false);
     }
 
     public static void main(String args[])
