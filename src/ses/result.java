@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-import java.util.Locale;
 
 public class result {
     JFrame r = new JFrame();
@@ -67,11 +66,12 @@ public class result {
                             String sql = "SELECT * FROM personalInfo WHERE lrn = '" + rnl + "'";
                             ResultSet rs = st.executeQuery(sql);
 
+
                             if (rs.next()) {
                                 String neym = rs.getString("lastname") + ", " + rs.getString("firstname") + " " + rs.getString("middlename");
 
                                 JLabel nem = new JLabel(neym);
-                                nem.setBounds(200, 130, 350, 25);
+                                nem.setBounds(150, 130, 350, 25);
                                 nem.setFont(label2);
                                 neym.toUpperCase();
                                 nem.setVisible(false);
@@ -109,8 +109,7 @@ public class result {
                                 ps.setVisible(true);
                                 ntt.setVisible(true);
 
-                            }
-                            else {
+                            } else {
                                 JLabel sor = new JLabel("Sorry, no record found.");
                                 sor.setBounds(250, 150, 350, 25);
                                 sor.setFont(label2);
@@ -120,6 +119,7 @@ public class result {
 
                                 c1.clearSelection();
                             }
+
                         } catch (ClassNotFoundException | SQLException classNotFoundException) {
                             classNotFoundException.printStackTrace();
                         }

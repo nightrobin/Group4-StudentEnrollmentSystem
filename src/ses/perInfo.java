@@ -3,8 +3,6 @@ package ses;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 
@@ -343,7 +341,7 @@ public class perInfo {
         JLabel nt = new JLabel();
         nt.setBounds(60, 650, 500, 20);
         nt.setFont(label3);
-        nt.setText("<html><u>Note: Kindly double check your information. All fields with '*' are required.</u></html>");
+        nt.setText("<html><u>Note: Kindly double check your infotmation. All fiedls with '*' are required.</u></html>");
         personal.add(nt);
 
         JButton bck = new JButton("Back to Log In");
@@ -354,12 +352,9 @@ public class perInfo {
         bck.setFont(label2);
         personal.add(bck);
 
-        bck.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new login();
-                personal.dispose();
-            }
+        bck.addActionListener(e -> {
+            new login();
+            personal.dispose();
         });
 
 
@@ -371,131 +366,128 @@ public class perInfo {
         next.setBackground(Color.decode("#cdc7be"));
 
 
-        next.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        next.addActionListener(e -> {
 
 
-                String lstname = lName.getText();
-                String frstname = fName.getText();
-                String mddlename = mName.getText();
-                String nameExten = String.valueOf(nExten.getSelectedItem());
-                long lren = Long.parseLong(LRN.getText());
-                String sexx = null;
-                if (ml.isSelected()){
-                    sexx = "Male";
-                }
-                else if (fl.isSelected()){
-                    sexx = "Female";
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "Required Field/s is/are empty");
-                }
-                String sex1 = sexx;
-                String dbb = db.getText();
-                String bpp = add1.getText();
-                String agee1 = age.getText();
-                String hh =  height1.getText();
-                String citizen = citi1.getText();
-                String w = wei1.getText();
-                String reli1 = rel1.getText();
-                String civil = String.valueOf(cs1.getSelectedItem());
-                String cnum = cp1.getText();
-                String em = ea1.getText();
-                String fath = ft1.getText();
-                String moth = mt1.getText();
-                String fathnum = fpn1.getText();
-                String mothnum = mpn1.getText();
-                String guardian = gbg1.getText();
-                String gum = gpn1.getText();
-                String categg = null;
-                if (k12.isSelected()){
-                    categg = "K-12";
-                }
-                else if (oc.isSelected()){
-                    categg = "Old Curriculum";
-                }else if (als.isSelected()){
-                    categg = "ALS";
-                }else if (wbg.isSelected()){
-                    categg = "With College Background";
-                } else {
-                    JOptionPane.showMessageDialog(null, "Required Field/s is/are empty");
-                }
-                String categ1 = categg;
-                String cat = String.valueOf(lsa1.getSelectedItem());
-                String schname = lsa3.getText();
-                String schadd= lsa5.getText();
-                String av = lsa7.getText();
+            String lstname = lName.getText();
+            String frstname = fName.getText();
+            String mddlename = mName.getText();
+            String nameExten = String.valueOf(nExten.getSelectedItem());
+            long lren = Long.parseLong(LRN.getText());
+            String sexx = null;
+            if (ml.isSelected()){
+                sexx = "Male";
+            }
+            else if (fl.isSelected()){
+                sexx = "Female";
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Required Field/s is/are empty");
+            }
+            String sex1 = sexx;
+            String dbb = db.getText();
+            String bpp = add1.getText();
+            String agee1 = age.getText();
+            String hh =  height1.getText();
+            String citizen = citi1.getText();
+            String w = wei1.getText();
+            String reli1 = rel1.getText();
+            String civil = String.valueOf(cs1.getSelectedItem());
+            String cnum = cp1.getText();
+            String em = ea1.getText();
+            String fath = ft1.getText();
+            String moth = mt1.getText();
+            String fathnum = fpn1.getText();
+            String mothnum = mpn1.getText();
+            String guardian = gbg1.getText();
+            String gum = gpn1.getText();
+            String categg = null;
+            if (k12.isSelected()){
+                categg = "K-12";
+            }
+            else if (oc.isSelected()){
+                categg = "Old Curriculum";
+            }else if (als.isSelected()){
+                categg = "ALS";
+            }else if (wbg.isSelected()){
+                categg = "With College Background";
+            } else {
+                JOptionPane.showMessageDialog(null, "Required Field/s is/are empty");
+            }
+            String categ1 = categg;
+            String cat1 = String.valueOf(lsa1.getSelectedItem());
+            String schname = lsa3.getText();
+            String schadd= lsa5.getText();
+            String av = lsa7.getText();
 
-                if (lstname.isEmpty() || frstname.isEmpty()  || dbb.isEmpty() || agee1.isEmpty() || hh.isEmpty() || citizen.isEmpty() || w.isEmpty() || civil.isEmpty() || em.isEmpty() ||
-                        fath.isEmpty() || moth.isEmpty() || fathnum.isEmpty() || mothnum.isEmpty() || cat.isEmpty() || schname.isEmpty() || schadd.isEmpty() || av.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Required Field/s is/are empty");
-                } else {
+            if (lstname.isEmpty() || frstname.isEmpty()  || dbb.isEmpty() || agee1.isEmpty() || hh.isEmpty() || citizen.isEmpty() || w.isEmpty() || civil.isEmpty() || em.isEmpty() ||
+                    fath.isEmpty() || moth.isEmpty() || fathnum.isEmpty() || mothnum.isEmpty() || cat1.isEmpty() || schname.isEmpty() || schadd.isEmpty() || av.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Required Field/s is/are empty");
+            } else {
 
-                    int agee = Integer.parseInt(age1.getText());
-                    int heightt = Integer.parseInt(height1.getText());
-                    int weigh = Integer.parseInt(wei1.getText());
-                    int average = Integer.parseInt(lsa7.getText());
+                int agee = Integer.parseInt(age1.getText());
+                int heightt = Integer.parseInt(height1.getText());
+                int weigh = Integer.parseInt(wei1.getText());
+                int average = Integer.parseInt(lsa7.getText());
 
-                    Connection con1;
-                    PreparedStatement insert;
-                    Statement st;
+                Connection con1;
+                PreparedStatement insert;
+                Statement st;
 
-                    try {
-                        Class.forName("com.mysql.cj.jdbc.Driver");
-                        con1 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
-                        st = con1.createStatement();
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    con1 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
+                    st = con1.createStatement();
 
-                        String sql = "SELECT * FROM `personalinfo` WHERE `lastname`= '"+ lstname + "' AND `firstname` = '"+ frstname +"' AND `middlename` = '" + mddlename + "' AND `lrn` = '" + lren +"'";
-                        ResultSet rs = st.executeQuery(sql);
+                    String sql = "SELECT * FROM `personalinfo` WHERE `lastname`= '"+ lstname + "' AND `firstname` = '"+ frstname +"' AND `middlename` = '" + mddlename + "' AND `lrn` = '" + lren +"'";
+                    ResultSet rs = st.executeQuery(sql);
 
-                        if (rs.next()) {
-                            showMessageDialog(null, "You are already registered");
-                        } else {
+                    if (rs.next()) {
+                        showMessageDialog(null, "You are already registered");
+                    } else {
 
-                            insert = con1.prepareStatement("insert into " +
-                                    "personalInfo(lastname, firstname, middlename, nExtension, lrn, seks, birthdate, age, address, height, citizenship, weight, religion, civil_status, cpnum, email, fathername, mothername,fathernum, mothernum, gname," +
-                                    "gnum, categ, schcategory,lschname,lschadd,ave)" + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        insert = con1.prepareStatement("insert into " +
+                                "personalInfo(lastname, firstname, middlename, nExtension, lrn, seks, birthdate, age, address, height, citizenship, weight, religion, civil_status, cpnum, email, fathername, mothername,fathernum, mothernum, gname," +
+                                "gnum, categ, schcategory,lschname,lschadd,ave)" + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
-                            insert.setString(1, lstname);
-                            insert.setString(2, frstname);
-                            insert.setString(3, mddlename);
-                            insert.setString(4, nameExten);
-                            insert.setLong(5, lren);
-                            insert.setString(6, sex1);
-                            insert.setString(7, dbb);
-                            insert.setInt(8, agee);
-                            insert.setString(9,bpp);
-                            insert.setInt(10, heightt);
-                            insert.setString(11, citizen);
-                            insert.setInt(12, weigh);
-                            insert.setString(13, reli1);
-                            insert.setString(14, civil);
-                            insert.setString(15, cnum);
-                            insert.setString(16, em);
-                            insert.setString(17, fath);
-                            insert.setString(18, moth);
-                            insert.setString(19, fathnum);
-                            insert.setString(20, mothnum);
-                            insert.setString(21, guardian);
-                            insert.setString(22, gum);
-                            insert.setString(23, categ1);
-                            insert.setString(24,cat);
-                            insert.setString(25, schname);
-                            insert.setString(26, schadd);
-                            insert.setInt(27, average);
-                            insert.executeUpdate();
+                        insert.setString(1, lstname);
+                        insert.setString(2, frstname);
+                        insert.setString(3, mddlename);
+                        insert.setString(4, nameExten);
+                        insert.setLong(5, lren);
+                        insert.setString(6, sex1);
+                        insert.setString(7, dbb);
+                        insert.setInt(8, agee);
+                        insert.setString(9,bpp);
+                        insert.setInt(10, heightt);
+                        insert.setString(11, citizen);
+                        insert.setInt(12, weigh);
+                        insert.setString(13, reli1);
+                        insert.setString(14, civil);
+                        insert.setString(15, cnum);
+                        insert.setString(16, em);
+                        insert.setString(17, fath);
+                        insert.setString(18, moth);
+                        insert.setString(19, fathnum);
+                        insert.setString(20, mothnum);
+                        insert.setString(21, guardian);
+                        insert.setString(22, gum);
+                        insert.setString(23, categ1);
+                        insert.setString(24, cat1);
+                        insert.setString(25, schname);
+                        insert.setString(26, schadd);
+                        insert.setInt(27, average);
+                        insert.executeUpdate();
 
-                            new chooseCourse(lren);
-                            personal.dispose();
+                        new chooseCourse(lren);
+                        personal.dispose();
 
-                        }
-
-                    } catch(ClassNotFoundException | SQLException classNotFoundException){
-                        classNotFoundException.printStackTrace();
                     }
 
+                } catch(ClassNotFoundException | SQLException classNotFoundException){
+                    classNotFoundException.printStackTrace();
                 }
+
             }
         });
 
@@ -572,6 +564,7 @@ public class perInfo {
 
     public static void main(String[] args) {
         new perInfo();
+
     }
 
 

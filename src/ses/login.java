@@ -8,7 +8,7 @@ import java.sql.*;
 
 public class login{
 
-    private JFrame f;
+    private final JFrame f;
 
     public login(){
         f = new JFrame("Enrollment System");
@@ -144,7 +144,6 @@ public class login{
         f.setVisible(true);
         f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        f.setResizable(false);
     }
 
     public static void main(String args[])

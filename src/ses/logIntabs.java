@@ -2,8 +2,6 @@ package ses;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class logIntabs {
 
@@ -33,15 +31,11 @@ public class logIntabs {
         info.setForeground(Color.decode("#dbe6fd"));
         lt.add(info);
 
-            info.addActionListener(new ActionListener() {
-                 @Override
-                  public void actionPerformed(ActionEvent e) {
+        info.addActionListener(e -> {
+            new viewInfo(sid);
+            lt.dispose();
 
-                     lt.dispose();
-                     new viewInfo(sid);
-
-                   }
-             });
+        });
 
         JButton enr = new JButton("ENROLL");
         enr.setBounds(0, 265, 1280, 216);
@@ -50,12 +44,23 @@ public class logIntabs {
         enr.setForeground(Color.decode("#47597e"));
         lt.add(enr);
 
+        enr.addActionListener(e -> {
+            new enrollProcess(sid);
+            lt.dispose();
+        });
+
         JButton lg = new JButton("LOGOUT");
         lg.setBounds(0, 475, 1280, 215);
         lg.setBackground(Color.decode("#b2ab8c"));
         lg.setFont(label1);
         lg.setForeground(Color.decode("#293b5f"));
         lt.add(lg);
+
+        lg.addActionListener(e -> {
+
+            new login();
+            lt.dispose();
+        });
 
         lt.add(user);
         lt.add(h);

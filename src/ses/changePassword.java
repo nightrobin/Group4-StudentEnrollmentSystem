@@ -2,8 +2,6 @@ package ses;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.Objects;
 import java.util.stream.Stream;
@@ -22,27 +20,21 @@ public class changePassword extends JFrame{
         JMenuBar mb = new JMenuBar();
         menu = new JMenu("Menu");
         i1 = new JMenuItem("Enrollment Process");
-        i1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                //new viewSched();
-                //f.setVisible(false);
-            }
+        i1.addActionListener(e -> {
+            new viewSched(studentNum);
+            f.dispose();
         });
 
         i2 = new JMenuItem("View Information");
-        i2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                //new viewInfo();
-                //f.setVisible(false);
-            }
+        i2.addActionListener(e -> {
+            new viewInfo(studentNum);
+            f.dispose();
         });
 
         i3 = new JMenuItem("Logout");
-        i3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                //new login();
-                //f.setVisible(false);
-            }
+        i3.addActionListener(e -> {
+            new login();
+            f.dispose();
         });
 
         menu.add(i1);
@@ -78,12 +70,9 @@ public class changePassword extends JFrame{
         b1.setBackground(Color.decode("#47597e"));
         b1.setFont(new Font("Sans", Font.BOLD, 17));
         f.add(b1);
-        b1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new viewInfo(studentNum);
-                f.dispose();
-            }
+        b1.addActionListener(actionEvent -> {
+            new viewInfo(studentNum);
+            f.dispose();
         });
 
         JButton b2 = new JButton("UPDATE INFORMATION");
@@ -92,12 +81,9 @@ public class changePassword extends JFrame{
         b2.setBackground(Color.decode("#47597e"));
         b2.setFont(new Font("Sans", Font.BOLD, 17));
         f.add(b2);
-        b1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                //new viewInfo();
-                //f.setVisible(false);
-            }
+        b2.addActionListener(actionEvent -> {
+            new updateInfo(studentNum);
+            f.dispose();
         });
 
         JButton b3 = new JButton("CHANGE PASSWORD");
@@ -114,11 +100,9 @@ public class changePassword extends JFrame{
         backButton.setForeground(Color.WHITE);
         backButton.setFont(new Font("Sans", Font.BOLD, 17));
         f.add(backButton);
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new logIntabs(studentNum);
-            }
+        backButton.addActionListener(actionEvent -> {
+            new logIntabs(studentNum);
+            f.dispose();
         });
 
 
@@ -178,60 +162,57 @@ public class changePassword extends JFrame{
         updateButton.setBorder(BorderFactory.createLineBorder(Color.decode("#47597e"),1));
         updateButton.setBackground(Color.decode("#dbe6fd"));
         f.add(updateButton);
-        updateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+        updateButton.addActionListener(actionEvent -> {
 
-                String cpw = currentPassField.getText();
-                String npw = newPassField.getText();
-                String cw = confirmPassField.getText();
-                long sid = Long.parseLong(studentNum);
+            String cpw = currentPassField.getText();
+            String npw = newPassField.getText();
+            String cw = confirmPassField.getText();
+            long sid = Long.parseLong(studentNum);
 
-                Connection con1;
-                Statement st;
-                int pwlength = 8;
+            Connection con1;
+            Statement st;
+            int pwlength = 8;
 
-                if (Stream.of(cpw, npw, cw).anyMatch(String::isEmpty)){
-                    JOptionPane.showMessageDialog(null, "Required Field/s is/are empty.");
-                } else if (!npw.equals(cw)) {
-                    JOptionPane.showMessageDialog(null, "Passwords do not match.");
-                } else if (Objects.equals(npw, cpw) && Objects.equals(cw, cpw)) {
-                    JOptionPane.showMessageDialog(null, "New password cannot be the same as your existing password.");
-                } else if (npw.length() < pwlength){
-                    JOptionPane.showMessageDialog(null, "Passwords must be at least 8 to 20 characters.");
-                } else {
-                    try {
-                        Class.forName("com.mysql.cj.jdbc.Driver");
-                        con1 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
-                        st = con1.createStatement();
-                        PreparedStatement update;
+            if (Stream.of(cpw, npw, cw).anyMatch(String::isEmpty)){
+                JOptionPane.showMessageDialog(null, "Required Field/s is/are empty.");
+            } else if (!npw.equals(cw)) {
+                JOptionPane.showMessageDialog(null, "Passwords do not match.");
+            } else if (Objects.equals(npw, cpw) && Objects.equals(cw, cpw)) {
+                JOptionPane.showMessageDialog(null, "New password cannot be the same as your existing password.");
+            } else if (npw.length() < pwlength){
+                JOptionPane.showMessageDialog(null, "Passwords must be at least 8 to 20 characters.");
+            } else {
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    con1 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
+                    st = con1.createStatement();
+                    PreparedStatement update;
 
-                        String sql = "SELECT * FROM personalInfo WHERE studID = '" + sid + "' AND password = '" + cpw + "'";
-                        ResultSet rs = st.executeQuery(sql);
+                    String sql = "SELECT * FROM personalInfo WHERE studID = '" + sid + "' AND password = '" + cpw + "'";
+                    ResultSet rs = st.executeQuery(sql);
 
-                        boolean has_results = rs.next();
+                    boolean has_results = rs.next();
 
-                        if(has_results) {
-                            do {
+                    if(has_results) {
+                        do {
 
-                            } while (rs.next());
-                            update = con1.prepareStatement("UPDATE personalInfo SET password = ? WHERE studID = '" + sid + "'");
-                            update.setString(1, npw);
-                            update.executeUpdate();
-                            JOptionPane.showMessageDialog(null, "Password updated successfully.");
-                            new changePassword(studentNum);
-                            f.dispose();
+                        } while (rs.next());
+                        update = con1.prepareStatement("UPDATE personalInfo SET password = ? WHERE studID = '" + sid + "'");
+                        update.setString(1, npw);
+                        update.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "Password updated successfully.");
+                        new changePassword(studentNum);
+                        f.dispose();
 
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Current Password entered is incorrect.");
-
-                        }
-                    } catch (ClassNotFoundException | SQLException classNotFoundException) {
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Current Password entered is incorrect.");
 
                     }
-                }
+                } catch (ClassNotFoundException | SQLException classNotFoundException) {
 
+                }
             }
+
         });
 
 

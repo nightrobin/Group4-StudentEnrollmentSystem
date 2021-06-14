@@ -2,15 +2,11 @@ package ses;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.Random;
 
-import static javax.swing.JOptionPane.OK_CANCEL_OPTION;
-
 public class chooseCourse {
-    private JFrame en = new JFrame("Enrollment");
+    private final JFrame en = new JFrame("Enrollment");
 
     public chooseCourse(long lren){
         en.setSize(1280,720);
@@ -33,13 +29,11 @@ public class chooseCourse {
         Connection con1;
         Statement st;
 
-        long nlr = lren;
-
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con1 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
 
-            String query = "SELECT * FROM personalInfo WHERE lrn = '"+nlr+"'";
+            String query = "SELECT * FROM personalInfo WHERE lrn = '"+ lren +"'";
 
             st = con1.createStatement();
             ResultSet rs = st.executeQuery(query);
@@ -172,26 +166,26 @@ public class chooseCourse {
                 ne.add(bsn1);
                 en.add(bsn1);
 
-                String courses [] = {
+                String[] courses = {
                         //College of Architecture and Urban Planning
-                        "Bachelor of Science in Architecture - BS Arch",
+                        "Bachelor of Science in Architecture",
                         //COLLEGE OF ENGINEERING AND TECHNOLOGY
-                        "Bachelor of Science in Chemical Engineering - BSCHE",
-                        "Bachelor of Science in Civil Engineering - BSCE",
-                        "Bachelor of Science in Computer Engineering - BS CpE",
-                        "Bachelor of Science in Computer Science - BSCS",
-                        "Bachelor of Science in Electrical Engineering - BSEE",
-                        "Bachelor of Science in Electronics Engineering - BS ECE",
-                        "Bachelor of Science in Information Technology - BSIT",
-                        "Bachelor of Science in Manufacturing Engineering - BSMFGE",
-                        "Bachelor of Science in Mechanical Engineering - BSME",
+                        "Bachelor of Science in Chemical Engineering",
+                        "Bachelor of Science in Civil Engineering",
+                        "Bachelor of Science in Computer Engineering ",
+                        "Bachelor of Science in Computer Science",
+                        "Bachelor of Science in Electrical Engineering",
+                        "Bachelor of Science in Electronics Engineering",
+                        "Bachelor of Science in Information Technology",
+                        "Bachelor of Science in Manufacturing Engineering",
+                        "Bachelor of Science in Mechanical Engineering",
                         //COLLEGE OF HUMANITIES, ARTS, AND SOCIAL SCIENCES
-                        "Bachelor of Arts in Communication - BAC",
-                        "Bachelor of Arts in Communication Major in Public Relations - BAC-PR",
-                        "Bachelor of Arts in Public Relations - BAPR",
-                        "Bachelor of Science in Social Work - BS SW",
+                        "Bachelor of Arts in Communication",
+                        "Bachelor of Arts in Communication Major in Public Relations",
+                        "Bachelor of Arts in Public Relations",
+                        "Bachelor of Science in Social Work",
                         //COLLEGE OF NURSING
-                        "Bachelor of Science in Nursing - BSN"};
+                        "Bachelor of Science in Nursing"};
 
 
 
@@ -253,46 +247,41 @@ public class chooseCourse {
                 submit.setBackground(Color.decode("#cdc7be"));
                 submit.setFont(label2);
                 coo.add(submit);
-                submit.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
+                submit.addActionListener(e -> {
 
-                        String cour = String.valueOf(course1.getSelectedItem());
-                        String cour2 = String.valueOf(course2.getSelectedItem());
-                        String cour3 = String.valueOf(course3.getSelectedItem());
-                        Long ids = Long.parseLong(sdi);
-                        String ids1 = sdi;
+                    String cour = String.valueOf(course1.getSelectedItem());
+                    String cour2 = String.valueOf(course2.getSelectedItem());
+                    String cour3 = String.valueOf(course3.getSelectedItem());
+                    long ids = Long.parseLong(sdi);
+                    String ids1 = sdi;
 
 
+                    if (cour.equals(cour2) || cour2.equals(cour3) || cour.equals(cour3)) {
+                        JOptionPane.showMessageDialog(null, "Each choices must be different!");
+                    } else {
+                        Connection con11;
+                        PreparedStatement update;
+                        Statement st1;
 
-                        if (cour == cour2 || cour2 == cour3 || cour == cour3) {
-                            JOptionPane.showMessageDialog(null, "Each choices must be different!");
-                        } else {
-                            Connection con1;
-                            PreparedStatement update;
-                            Statement st;
+                        try {
+                            Class.forName("com.mysql.cj.jdbc.Driver");
+                            con11 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
+                            st1 = con11.createStatement();
 
-                            try {
-                                Class.forName("com.mysql.cj.jdbc.Driver");
-                                con1 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
-                                st = con1.createStatement();
+                            update = con11.prepareStatement("UPDATE personalInfo SET course = ?, studID = ?, password = ? WHERE lrn = '" + lren +"'");
+                            update.setString(1, cour);
+                            update.setLong(2, ids);
+                            update.setString(3, ids1);
+                            update.executeUpdate();
 
-                                update = con1.prepareStatement("UPDATE personalInfo SET course = ?, studID = ?, password = ? WHERE lrn = '" + nlr +"'");
-                                update.setString(1, cour);
-                                update.setLong(2, ids);
-                                update.setString(3, ids1);
-                                update.executeUpdate();
+                            JOptionPane.showMessageDialog(null, "Application Submitted");
 
-                                JOptionPane.showMessageDialog(null, "Application Submitted");
+                            new login();
+                            en.dispose();
 
-                                new login();
-                                en.dispose();
-
-                            } catch (ClassNotFoundException | SQLException classNotFoundException) {
-                                classNotFoundException.printStackTrace();
-                            }
+                        } catch (ClassNotFoundException | SQLException classNotFoundException) {
+                            classNotFoundException.printStackTrace();
                         }
-
                     }
 
                 });
@@ -316,8 +305,6 @@ public class chooseCourse {
         }
 
     }
-
-
 
 
     public static void main(String[] args) {
