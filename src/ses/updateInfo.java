@@ -1,4 +1,4 @@
-package Form;
+package ses;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ public class updateInfo extends JFrame{
     JMenuItem i1, i2, i3;
     public JLabel studentNum;
 
-    public updateInfo(){
+    public updateInfo(String studentNum){
 
         JFrame f = new JFrame("Enrollment System");
             JPanel mainPanel=new JPanel();
@@ -62,9 +62,9 @@ public class updateInfo extends JFrame{
                     f.add(user);
 
                     //student number retrieve from the login
-                    studentNum = new JLabel("");
-                    studentNum.setBounds(1000, 0, 300, 30);
-                    f.add(studentNum);
+                    this.studentNum = new JLabel("");
+                    this.studentNum.setBounds(1000, 0, 300, 30);
+                    f.add(this.studentNum);
 
                 JPanel menuPanel = new JPanel();
                 menuPanel.setBounds(0,0,270,720);
@@ -79,7 +79,7 @@ public class updateInfo extends JFrame{
                         b1.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent actionEvent) {
-                                new viewInfo();
+                                new viewInfo(studentNum);
                                 f.setVisible(false);
                             }
                         });
@@ -100,7 +100,7 @@ public class updateInfo extends JFrame{
                         b3.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent actionEvent) {
-                                new changePassword();
+                                new changePassword(studentNum);
                                 f.setVisible(false);
                             }
                         });
@@ -115,8 +115,8 @@ public class updateInfo extends JFrame{
                     backButton.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent actionEvent) {
-                            //new homePage();
-                            //f.setVisible(false);
+                            new logIntabs(studentNum);
+                            f.dispose();
                         }
                     });
 
@@ -451,7 +451,7 @@ public class updateInfo extends JFrame{
     }
 
     public static void main(String[] args) {
-        new updateInfo();
+        
     }
 }
 

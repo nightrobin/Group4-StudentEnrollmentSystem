@@ -79,8 +79,8 @@ public class viewInfo extends JFrame{
                             b2.addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent actionEvent) {
-                                    //new updateInfo();
-                                    //f.setVisible(false);
+                                    new updateInfo(studentNum);
+                                    f.dispose();
                                 }
                             });
 
