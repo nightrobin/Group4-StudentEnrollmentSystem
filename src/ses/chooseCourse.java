@@ -30,7 +30,6 @@ public class chooseCourse {
         Font label3 = new Font("SansSerif", Font.PLAIN, 12);
 
 
-
         Connection con1;
         Statement st;
 
@@ -196,8 +195,6 @@ public class chooseCourse {
 
 
 
-
-
                 JPanel coo = new JPanel();
                 coo.setBounds(650, 10, 615, 665);
                 coo.setBackground(Color.decode("#f4eee8"));
@@ -248,7 +245,7 @@ public class chooseCourse {
                 String v = "2021";
                 long n = ran.nextInt(100000)+1;
                 String val = String.valueOf(n);
-                JLabel rann = new JLabel(v + val);
+                String sdi = v + val;
 
                 JButton submit = new JButton("SUBMIT APPLICATION");
                 submit.setBounds(20,600, 575, 35);
@@ -263,7 +260,8 @@ public class chooseCourse {
                         String cour = String.valueOf(course1.getSelectedItem());
                         String cour2 = String.valueOf(course2.getSelectedItem());
                         String cour3 = String.valueOf(course3.getSelectedItem());
-                        String ids = String.valueOf(rann);
+                        Long ids = Long.parseLong(sdi);
+                        String ids1 = sdi;
 
 
 
@@ -271,7 +269,7 @@ public class chooseCourse {
                             JOptionPane.showMessageDialog(null, "Each choices must be different!");
                         } else {
                             Connection con1;
-                            PreparedStatement insert;
+                            PreparedStatement update;
                             Statement st;
 
                             try {
@@ -279,13 +277,11 @@ public class chooseCourse {
                                 con1 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
                                 st = con1.createStatement();
 
-
-
-                                insert = con1.prepareStatement("UPDATE personalInfo SET course = ? AND username = ? AND password = ? WHERE lrn = '" + nlr +"'");
-                                insert.setString(1, cour);
-                                insert.setString(2, ids);
-                                insert.setString(3, ids);
-                                insert.executeUpdate();
+                                update = con1.prepareStatement("UPDATE personalInfo SET course = ?, studID = ?, password = ? WHERE lrn = '" + nlr +"'");
+                                update.setString(1, cour);
+                                update.setLong(2, ids);
+                                update.setString(3, ids1);
+                                update.executeUpdate();
 
                                 JOptionPane.showMessageDialog(null, "Application Submitted");
 

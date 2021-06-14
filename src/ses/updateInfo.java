@@ -451,7 +451,7 @@ public class updateInfo extends JFrame{
     }
 
     public static void main(String[] args) {
-        
+
     }
 }
 

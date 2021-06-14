@@ -572,7 +572,6 @@ public class perInfo {
 
     public static void main(String[] args) {
         new perInfo();
-
     }
 
 
