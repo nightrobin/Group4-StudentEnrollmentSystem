@@ -76,8 +76,8 @@ public class enrollProcess extends JFrame{
         b1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //new viewSched();
-                //f.setVisible(false);
+                new viewSched(sid);
+                f.dispose();
             }
         });
 
@@ -96,7 +96,7 @@ public class enrollProcess extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 new assessment(sid);
-                f.setVisible(false);
+                f.dispose();
             }
         });
 
@@ -135,12 +135,9 @@ public class enrollProcess extends JFrame{
         backButton.setForeground(Color.WHITE);
         backButton.setFont(new Font("Sans", Font.BOLD, 17));
         f.add(backButton);
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new logIntabs(sid);
-                f.dispose();
-            }
+        backButton.addActionListener(actionEvent -> {
+            new logIntabs(sid);
+            f.dispose();
         });
 
 

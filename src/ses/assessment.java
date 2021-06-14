@@ -68,8 +68,8 @@ public class assessment extends JFrame {
         b1.setFont(new Font("Sans", Font.BOLD, 17));
         f.add(b1);
         b1.addActionListener(actionEvent -> {
-//                                        new viewSched();
-//                                        f.dispose();
+            new viewSched(sid);
+            f.dispose();
         });
 
         JLabel step2 = new JLabel("Step 2");

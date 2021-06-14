@@ -13,8 +13,8 @@ import java.sql.Statement;
 public class viewSched extends JFrame{
     JMenu menu;
     JMenuItem i1, i2, i3;
-    private JFrame f;
-    private JTable sched;
+    private final JFrame f;
+    private final JTable sched;
 
     public viewSched(String studentNum){
         f = new JFrame("Enrollment System");
@@ -137,12 +137,9 @@ public class viewSched extends JFrame{
         backButton.setForeground(Color.WHITE);
         backButton.setFont(new Font("Sans", Font.BOLD, 17));
         f.add(backButton);
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new logIntabs(studentNum);
-                f.dispose();
-            }
+        backButton.addActionListener(actionEvent -> {
+            new logIntabs(studentNum);
+            f.dispose();
         });
 
 
@@ -205,27 +202,29 @@ public class viewSched extends JFrame{
         f.add(header);
 
 
-
         sched = new JTable();
         sched.setBounds(370, 200, 800, 400);
         sched.setBackground(Color.decode("#b2ab8c"));
         sched.setForeground(Color.WHITE);
         sched.setFont(new Font("Sans", Font.BOLD, 15));
+        sched.setEnabled(false);
         f.add(sched);
 
 
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/enrollment_database", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
             Statement st2 = con.createStatement();
-            ResultSet rs2 = st2.executeQuery("SELECT * FROM user where student_Number='"+ studentNum +"'");
+            ResultSet rs2 = st2.executeQuery("SELECT * FROM personalinfo where studID ='"+ studentNum +"'");
 
             if (rs2.next()) {
-                String schedsett = rs2.getString("schedSet");
+                String schedsett = rs2.getString("sched");
+                String schedset1 = rs2.getString("sched1");
+
 
                 ResultSet rs = st2.executeQuery("Select subjectCode, section, subjectTitle, units, days, time, room FROM schedules where sets='"+schedsett+"'");
-                    sched.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+                sched.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
                 TableColumnModel columnModel = sched.getColumnModel();
                 columnModel.getColumn(0).setPreferredWidth(120);
                 columnModel.getColumn(1).setPreferredWidth(40);
@@ -235,6 +234,9 @@ public class viewSched extends JFrame{
                 columnModel.getColumn(5).setPreferredWidth(130);
                 columnModel.getColumn(6).setPreferredWidth(60);
                 sched.setRowHeight(30);
+
+
+
             }
 
         }

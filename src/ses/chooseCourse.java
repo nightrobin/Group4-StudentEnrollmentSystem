@@ -3,6 +3,7 @@ package ses;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
+import java.util.Arrays;
 import java.util.Random;
 
 public class chooseCourse {
@@ -255,6 +256,25 @@ public class chooseCourse {
                     long ids = Long.parseLong(sdi);
                     String ids1 = sdi;
 
+                    String college = null;
+                    int sched, sched1;
+                    if (cour.equals("Bachelor of Science in Architecture")) {
+                        college = "CAUP";
+                        sched = 1;
+                        sched1 = 3;
+                    } else if (Arrays.asList("Bachelor of Science in Chemical Engineering", "Bachelor of Science in Civil Engineering", "Bachelor of Science in Computer Engineering ", "Bachelor of Science in Computer Science", "Bachelor of Science in Electrical Engineering", "Bachelor of Science in Electronics Engineering", "Bachelor of Science in Information Technology", "Bachelor of Science in Manufacturing Engineering", "Bachelor of Science in Mechanical Engineering").contains(cour)) {
+                        college = "CET";
+                        sched = 2;
+                        sched1 = 4;
+                    } else if (Arrays.asList("Bachelor of Arts in Communication", "Bachelor of Arts in Communication Major in Public Relations", "Bachelor of Arts in Public Relations", "Bachelor of Science in Social Work").contains(cour)) {
+                        college = "CHASS";
+                        sched = 3;
+                        sched1 = 2;
+                    } else {
+                        college = "CN";
+                        sched = 4;
+                        sched1 = 1;
+                    }
 
                     if (cour.equals(cour2) || cour2.equals(cour3) || cour.equals(cour3)) {
                         JOptionPane.showMessageDialog(null, "Each choices must be different!");
@@ -268,10 +288,13 @@ public class chooseCourse {
                             con11 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
                             st1 = con11.createStatement();
 
-                            update = con11.prepareStatement("UPDATE personalInfo SET course = ?, studID = ?, password = ? WHERE lrn = '" + lren +"'");
+                            update = con11.prepareStatement("UPDATE personalInfo SET course = ?, studID = ?, password = ?, college = ?, sched = ?, sched1 = ? WHERE lrn = '" + lren +"'");
                             update.setString(1, cour);
                             update.setLong(2, ids);
                             update.setString(3, ids1);
+                            update.setString(4, college);
+                            update.setInt(5, sched);
+                            update.setInt(6, sched1);
                             update.executeUpdate();
 
                             JOptionPane.showMessageDialog(null, "Application Submitted");

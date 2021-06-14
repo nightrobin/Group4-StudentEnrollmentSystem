@@ -45,7 +45,7 @@ public class logIntabs {
         lt.add(enr);
 
         enr.addActionListener(e -> {
-            new enrollProcess(sid);
+            new viewSched(sid);
             lt.dispose();
         });
 
