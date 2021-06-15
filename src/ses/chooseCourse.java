@@ -288,13 +288,12 @@ public class chooseCourse {
                             con11 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
                             st1 = con11.createStatement();
 
-                            update = con11.prepareStatement("UPDATE personalInfo SET course = ?, studID = ?, password = ?, college = ?, sched = ?, sched1 = ? WHERE lrn = '" + lren +"'");
+                            update = con11.prepareStatement("UPDATE personalInfo SET course = ?, studID = ?, password = ?, college = ?, sched = ? WHERE lrn = '" + lren +"'");
                             update.setString(1, cour);
                             update.setLong(2, ids);
                             update.setString(3, ids1);
                             update.setString(4, college);
                             update.setInt(5, sched);
-                            update.setInt(6, sched1);
                             update.executeUpdate();
 
                             JOptionPane.showMessageDialog(null, "Application Submitted");
