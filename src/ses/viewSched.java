@@ -3,8 +3,6 @@ package ses;
 import javax.swing.*;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -14,7 +12,6 @@ public class viewSched extends JFrame{
     JMenu menu;
     JMenuItem i1, i2, i3;
     private final JFrame f;
-    private final JTable sched;
 
     public viewSched(String studentNum){
         f = new JFrame("Enrollment System");
@@ -29,11 +26,9 @@ public class viewSched extends JFrame{
         i2 = new JMenuItem("View Information");
 
         i3 = new JMenuItem("Logout");
-        i3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                new login();
-                f.setVisible(false);
-            }
+        i3.addActionListener(e -> {
+            new login();
+            f.setVisible(false);
         });
 
         menu.add(i1);
@@ -82,12 +77,9 @@ public class viewSched extends JFrame{
         b2.setBackground(Color.decode("#47597e"));
         b2.setFont(new Font("Sans", Font.BOLD, 17));
         f.add(b2);
-        b2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new assessment(studentNum);
-                f.dispose();
-            }
+        b2.addActionListener(actionEvent -> {
+            new assessment(studentNum);
+            f.dispose();
         });
 
 
@@ -102,12 +94,9 @@ public class viewSched extends JFrame{
         b3.setBackground(Color.decode("#47597e"));
         b3.setFont(new Font("Sans", Font.BOLD, 17));
         f.add(b3);
-        b3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new enrollProcess(studentNum);
-                f.dispose();
-            }
+        b3.addActionListener(actionEvent -> {
+            new enrollProcess(studentNum);
+            f.dispose();
         });
 
 
@@ -122,17 +111,14 @@ public class viewSched extends JFrame{
         b4.setBackground(Color.decode("#47597e"));
         b4.setFont(new Font("Sans", Font.BOLD, 17));
         f.add(b4);
-        b4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new regForm(studentNum);
-                f.dispose();
-            }
+        b4.addActionListener(actionEvent -> {
+            new regForm(studentNum);
+            f.dispose();
         });
 
         JButton backButton = new JButton("BACK");
         backButton.setForeground(Color.WHITE);
-        backButton.setBounds(   9, 615, 250, 35);
+        backButton.setBounds(   9, 605, 250, 35);
         backButton.setBackground(Color.decode("#b2ab8c"));
         backButton.setForeground(Color.WHITE);
         backButton.setFont(new Font("Sans", Font.BOLD, 17));
@@ -202,7 +188,7 @@ public class viewSched extends JFrame{
         f.add(header);
 
 
-        sched = new JTable();
+        JTable sched = new JTable();
         sched.setBounds(370, 200, 800, 400);
         sched.setBackground(Color.decode("#b2ab8c"));
         sched.setForeground(Color.WHITE);
@@ -220,10 +206,9 @@ public class viewSched extends JFrame{
 
             if (rs2.next()) {
                 String schedsett = rs2.getString("sched");
-                String schedset1 = rs2.getString("sched1");
 
 
-                ResultSet rs = st2.executeQuery("Select subjectCode, section, subjectTitle, units, days, time, room FROM schedules where sets='"+schedsett+"'");
+                ResultSet rs = st2.executeQuery("SELECT subjectCode, section, subjectTitle, units, days, time, room FROM schedules where sets='"+ schedsett+"'");
                 sched.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
                 TableColumnModel columnModel = sched.getColumnModel();
                 columnModel.getColumn(0).setPreferredWidth(120);
