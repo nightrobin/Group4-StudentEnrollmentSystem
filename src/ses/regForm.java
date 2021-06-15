@@ -293,7 +293,6 @@ public class regForm {
                 f.add(sched);
 
                 String schedsett = rs.getString("sched");
-                String schedset1 = rs.getString("sched1");
 
 
                 rs = st1.executeQuery("Select subjectCode, section, subjectTitle, units, days, time, room FROM schedules where sets='"+schedsett+"'");
