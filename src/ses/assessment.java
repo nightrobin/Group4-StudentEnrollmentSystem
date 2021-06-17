@@ -2,6 +2,7 @@ package ses;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.*;
 
 public class assessment extends JFrame {
     JMenu menu;
@@ -30,8 +31,35 @@ public class assessment extends JFrame {
 
         i3 = new JMenuItem("Logout");
         i3.addActionListener(e -> {
-            new login();
-            f.dispose();
+            Connection con11;
+            PreparedStatement update;
+            Statement st1;
+
+            try {
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                con11 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
+                st1 = con11.createStatement();
+
+                String sql = "SELECT * FROM personalinfo WHERE studID = '" +sid+ "'";
+                ResultSet rs = st1.executeQuery(sql);
+
+                String es = "Enrolled";
+                if (rs.next()) {
+                    if (rs.getString("enrollStatus").equals(es)) {
+                        new login();
+                        f.dispose();
+                    } else{
+                        JOptionPane.showMessageDialog(null,"You are not yet enrolled, You are going to be redirected to Enroll Tab.");
+                        new viewSched(sid);
+                        f.dispose();
+                    }
+
+                }
+
+            } catch (ClassNotFoundException | SQLException classNotFoundException) {
+                classNotFoundException.printStackTrace();
+            }
         });
 
         menu.add(i1);

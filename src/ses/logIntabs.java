@@ -2,6 +2,7 @@ package ses;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.*;
 
 public class logIntabs {
 
@@ -57,9 +58,35 @@ public class logIntabs {
         lt.add(lg);
 
         lg.addActionListener(e -> {
+            Connection con11;
+            PreparedStatement update;
+            Statement st1;
 
-            new login();
-            lt.dispose();
+            try {
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                con11 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
+                st1 = con11.createStatement();
+
+                String sql = "SELECT * FROM personalinfo WHERE studID = '" +sid+ "'";
+                ResultSet rs = st1.executeQuery(sql);
+
+                String es = "Enrolled";
+                if (rs.next()) {
+                    if (rs.getString("enrollStatus").equals(es)) {
+                        new login();
+                        lt.dispose();
+                    } else{
+                        JOptionPane.showMessageDialog(null,"You are not yet enrolled, You are going to be redirected to Enroll Tab.");
+                        new viewSched(sid);
+                        lt.dispose();
+                    }
+
+                }
+
+            } catch (ClassNotFoundException | SQLException classNotFoundException) {
+                classNotFoundException.printStackTrace();
+            }
         });
 
         lt.add(user);

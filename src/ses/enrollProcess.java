@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
 public class enrollProcess extends JFrame{
     JMenu menu;
@@ -34,8 +35,35 @@ public class enrollProcess extends JFrame{
         i3 = new JMenuItem("Logout");
         i3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new login();
-                f.dispose();
+                Connection con11;
+                PreparedStatement update;
+                Statement st1;
+
+                try {
+
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    con11 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
+                    st1 = con11.createStatement();
+
+                    String sql = "SELECT * FROM personalinfo WHERE studID = '" +sid+ "'";
+                    ResultSet rs = st1.executeQuery(sql);
+
+                    String es = "Enrolled";
+                    if (rs.next()) {
+                        if (rs.getString("enrollStatus").equals(es)) {
+                            new login();
+                            f.dispose();
+                        } else{
+                            JOptionPane.showMessageDialog(null,"You are not yet enrolled, You are going to be redirected to Enroll Tab.");
+                            new viewSched(sid);
+                            f.dispose();
+                        }
+
+                    }
+
+                } catch (ClassNotFoundException | SQLException classNotFoundException) {
+                    classNotFoundException.printStackTrace();
+                }
             }
         });
 
@@ -129,8 +157,22 @@ public class enrollProcess extends JFrame{
         b4.setFont(new Font("Sans", Font.BOLD, 17));
         f.add(b4);
         b4.addActionListener(actionEvent -> {
-            new regForm(sid);
-            f.dispose();
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost/ses", "root", "");
+                Statement st = con1.createStatement();
+                PreparedStatement update;
+
+                String es = "Enrolled";
+                update = con1.prepareStatement("UPDATE personalInfo SET enrollStatus = ? WHERE studID = '" + Long.parseLong(sid) +"'");
+                update.setString(1, es);
+                update.executeUpdate();
+                    new regForm(sid);
+                    f.dispose();
+
+        } catch (ClassNotFoundException | SQLException classNotFoundException){
+            classNotFoundException.printStackTrace();
+        }
         });
 
         JButton backButton = new JButton("BACK");
