@@ -63,7 +63,7 @@ CREATE TABLE `personalinfo` (
   `regStatus` varchar(150) NOT NULL DEFAULT 'Regular',
   `studType` varchar(150) NOT NULL DEFAULT 'New',
   `yrlvl` int(150) NOT NULL DEFAULT 1,
-  `sched` int(11) NOT NULL
+  `sched` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
