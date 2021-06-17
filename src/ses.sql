@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2021 at 12:24 PM
+-- Generation Time: Jun 17, 2021 at 04:58 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -45,15 +45,16 @@ CREATE TABLE `personalinfo` (
   `weight` int(5) NOT NULL,
   `religion` varchar(150) NOT NULL,
   `civil_status` varchar(150) NOT NULL,
-  `cpnum` int(15) NOT NULL,
+  `cpnum` bigint(15) NOT NULL,
   `email` varchar(150) NOT NULL,
   `fathername` varchar(250) NOT NULL,
   `mothername` varchar(250) NOT NULL,
-  `fathernum` int(15) NOT NULL,
-  `mothernum` int(15) NOT NULL,
+  `fathernum` bigint(15) NOT NULL,
+  `mothernum` bigint(15) NOT NULL,
   `gname` varchar(150) NOT NULL,
-  `gnum` int(15) NOT NULL,
+  `gnum` varchar(150) NOT NULL DEFAULT '_',
   `schcategory` varchar(150) NOT NULL,
+  `categ` varchar(150) NOT NULL,
   `lschname` varchar(250) NOT NULL,
   `lschadd` text NOT NULL,
   `ave` varchar(5) NOT NULL,
@@ -61,8 +62,16 @@ CREATE TABLE `personalinfo` (
   `college` varchar(150) NOT NULL DEFAULT 'college',
   `regStatus` varchar(150) NOT NULL DEFAULT 'Regular',
   `studType` varchar(150) NOT NULL DEFAULT 'New',
-  `yrlvl` int(150) NOT NULL DEFAULT 1
+  `yrlvl` int(150) NOT NULL DEFAULT 1,
+  `sched` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `personalinfo`
+--
+
+INSERT INTO `personalinfo` (`id`, `studID`, `password`, `lastname`, `firstname`, `middlename`, `nExtension`, `lrn`, `seks`, `birthdate`, `age`, `address`, `height`, `citizenship`, `weight`, `religion`, `civil_status`, `cpnum`, `email`, `fathername`, `mothername`, `fathernum`, `mothernum`, `gname`, `gnum`, `schcategory`, `categ`, `lschname`, `lschadd`, `ave`, `course`, `college`, `regStatus`, `studType`, `yrlvl`, `sched`) VALUES
+(28, 202121955, 'enebeyen', 'Depositar', 'Alvy', 'Lustestica', '', 136439070299, 'Female', ' 2001-08-13', 19, '1215 Mithi', 150, 'Filipino', 45, 'JW', 'Single', 9123456789, 'alvy@gmail.com', 'Alberto Depositar', 'Ivy Depositar', 9123456789, 9123456789, '', '', 'SENIOR HIGH SCHOOL', 'K-12', 'Arellano University', '1600 Sampaloc', '94', 'Bachelor of Science in Information Technology', 'CET', 'Regular', 'New', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -146,7 +155,7 @@ ALTER TABLE `schedules`
 -- AUTO_INCREMENT for table `personalinfo`
 --
 ALTER TABLE `personalinfo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
