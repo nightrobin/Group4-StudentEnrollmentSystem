@@ -375,7 +375,7 @@ public class perInfo {
             String frstname = fName.getText();
             String mddlename = mName.getText();
             String nameExten = String.valueOf(nExten.getSelectedItem());
-            long lren = Long.parseLong(LRN.getText());
+            String lren = LRN.getText();
             String sexx = null;
             if (ml.isSelected()){
                 sexx = "Male";
@@ -422,11 +422,12 @@ public class perInfo {
             String schadd= lsa5.getText();
             String av = lsa7.getText();
 
-            if (lstname.isEmpty() || frstname.isEmpty()  || dbb.isEmpty() || agee1.isEmpty() || hh.isEmpty() || citizen.isEmpty() || w.isEmpty() || civil.isEmpty() || em.isEmpty() ||
+            if (lstname.isEmpty() || frstname.isEmpty()  || lren.isEmpty() || dbb.isEmpty() || agee1.isEmpty() || hh.isEmpty() || citizen.isEmpty() || w.isEmpty() || civil.isEmpty() || em.isEmpty() ||
                     fath.isEmpty() || moth.isEmpty() || fathnum.isEmpty() || mothnum.isEmpty() || cat1.isEmpty() || schname.isEmpty() || schadd.isEmpty() || av.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Required Field/s is/are empty");
             } else {
 
+                long lren1 = Long.parseLong(lren);
                 int agee = Integer.parseInt(age1.getText());
                 int heightt = Integer.parseInt(height1.getText());
                 int weigh = Integer.parseInt(wei1.getText());
@@ -456,7 +457,7 @@ public class perInfo {
                         insert.setString(2, frstname);
                         insert.setString(3, mddlename);
                         insert.setString(4, nameExten);
-                        insert.setLong(5, lren);
+                        insert.setLong(5, lren1);
                         insert.setString(6, sex1);
                         insert.setString(7, dbb);
                         insert.setInt(8, agee);
@@ -481,7 +482,7 @@ public class perInfo {
                         insert.setInt(27, average);
                         insert.executeUpdate();
 
-                        new chooseCourse(lren);
+                        new chooseCourse(lren1);
                         personal.dispose();
 
                     }
