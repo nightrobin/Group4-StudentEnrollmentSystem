@@ -47,7 +47,7 @@ public class result{
         f.add(n);
 
         JButton searchBtn = new JButton("Search");
-        searchBtn.setBounds(1100, 240, 100, 30);
+        searchBtn.setBounds(1100, 240, 120, 30);
         searchBtn.setFont(new Font("Sans", Font.BOLD, 15));
         searchBtn.setBackground(Color.decode("#B2AB8C"));
         searchBtn.setForeground(Color.WHITE);
@@ -86,33 +86,33 @@ public class result{
                                 String neym = rs.getString("lastname") + ", " + rs.getString("firstname") + " " + rs.getString("middlename");
 
                                 JLabel nem = new JLabel(neym);
-                                nem.setBounds(900, 280, 350, 25);
+                                nem.setBounds(900, 300, 350, 25);
                                 nem.setFont(label2);
                                 neym.toUpperCase();
                                 nem.setVisible(false);
                                 f.add(nem);
 
                                 JLabel nt = new JLabel();
-                                nt.setBounds(1000, 320, 500, 25);
+                                nt.setBounds(1000, 340, 500, 25);
                                 nt.setText("<html><u>Sample Email</u></html>");
                                 nt.setFont(new Font("SansSerif", Font.PLAIN, 15));
                                 nt.setVisible(false);
                                 f.add(nt);
 
                                 JLabel un = new JLabel("STUDENT ID: " + rs.getString("studID"));
-                                un.setBounds(900, 360, 350, 25);
+                                un.setBounds(900, 380, 350, 25);
                                 un.setFont(label2);
                                 un.setVisible(false);
                                 f.add(un);
 
                                 JLabel ps = new JLabel("PASSWORD: " + rs.getString("password"));
-                                ps.setBounds(900, 400, 350, 25);
+                                ps.setBounds(900, 420, 350, 25);
                                 ps.setFont(label2);
                                 ps.setVisible(false);
                                 f.add(ps);
 
                                 JLabel ntt = new JLabel();
-                                ntt.setBounds(900, 450, 500, 25);
+                                ntt.setBounds(900, 470, 500, 25);
                                 ntt.setText("<html><u>We advise to change your password upon logging in.</u></html>");
                                 ntt.setFont(new Font("SansSerif", Font.ITALIC, 13));
                                 ntt.setVisible(false);
@@ -126,7 +126,7 @@ public class result{
 
                             } else {
                                 JLabel sor = new JLabel("Sorry, no record found.");
-                                sor.setBounds(900, 150, 350, 25);
+                                sor.setBounds(900, 300, 350, 25);
                                 sor.setFont(label2);
                                 sor.setVisible(false);
                                 f.add(sor);
@@ -146,25 +146,11 @@ public class result{
         });
 
 
-        JButton registerBtn = new JButton("Register");
-        registerBtn.setBounds(900, 515, 300, 35);
-        registerBtn.setFont(new Font("Sans", Font.BOLD, 15));
-        registerBtn.setBackground(Color.decode("#47597e"));
-        registerBtn.setForeground(Color.WHITE);
-        f.add(registerBtn);
-            registerBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    new perInfo();
-                    f.dispose();
-                }
-            });
-
         JButton clearBtn = new JButton("Clear");
         clearBtn.setBounds(900, 570, 130, 35);
         clearBtn.setFont(new Font("Sans", Font.BOLD, 15));
-        clearBtn.setBackground(Color.decode("#DBE6FD"));
-        clearBtn.setForeground(Color.decode("#293B5F"));
+        clearBtn.setBackground(Color.decode("#293B5F"));
+        clearBtn.setForeground(Color.WHITE);
         f.add(clearBtn);
             clearBtn.addActionListener(new ActionListener() {
                 @Override
@@ -175,10 +161,10 @@ public class result{
             });
 
         JButton backBtn = new JButton("Back to login");
-        backBtn.setBounds(1070, 570, 130, 35);
+        backBtn.setBounds(1090, 570, 130, 35);
         backBtn.setFont(new Font("Sans", Font.BOLD, 15));
-        backBtn.setBackground(Color.decode("#BDBE6FD"));
-        backBtn.setForeground(Color.decode("#293B5F"));
+        backBtn.setBackground(Color.decode("#293B5F"));
+        backBtn.setForeground(Color.WHITE);
         f.add(backBtn);
             backBtn.addActionListener(new ActionListener() {
                 @Override
@@ -196,9 +182,12 @@ public class result{
 
         JPanel leftPanel = new JPanel();
         leftPanel.setBounds(20,100, 840, 540);
-        leftPanel.setBackground(Color.decode("#293b5f"));
 
-
+        JPanel border = new JPanel();
+        border.setBounds(845, 100, 400,540);
+        border.setBackground(new Color(0,0,0,0));
+        border.setBorder(BorderFactory.createLineBorder(Color.decode("#293b5f"), 3));
+        f.add(border);
 
 
 

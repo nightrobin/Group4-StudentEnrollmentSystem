@@ -98,29 +98,6 @@ public class login{
             }
         });
 
-
-        /*JButton registerButton = new JButton("REGISTER");
-        registerButton.setBounds(900, 420, 300, 30);
-        f.add(registerButton);
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new perInfo();
-                f.dispose();
-            }
-        });
-
-        JButton resultButton = new JButton("CHECK RESULTS");
-        resultButton.setBounds(900, 460, 300, 30);
-        f.add(resultButton);
-        resultButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new result();
-                f.dispose();
-            }
-        });*/
-
         JLabel note = new JLabel("<html> <center> <i> Note: For new students, click</i> </center> </html", SwingConstants.CENTER);
         note.setBounds(880, 520, 300, 40);
         note.setFont(new Font("Sans", Font.PLAIN, 15));
@@ -134,7 +111,7 @@ public class login{
         newStudent.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new result();
+                new perInfo();
                 f.dispose();
             }
 
