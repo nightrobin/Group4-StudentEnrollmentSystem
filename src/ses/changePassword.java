@@ -150,7 +150,7 @@ public class changePassword extends JFrame{
 
 
         JLabel studentnumLabel = new JLabel("Student Number: " + studentNum);
-        studentnumLabel.setBounds(670, 220, 250, 50);
+        studentnumLabel.setBounds(710, 220, 250, 50);
         studentnumLabel.setFont(new Font("Sans", Font.PLAIN, 12));
         studentnumLabel.setForeground(Color.RED);
         studentnumLabel.setFont(label2);

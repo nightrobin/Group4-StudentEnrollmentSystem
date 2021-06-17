@@ -343,7 +343,7 @@ public class perInfo {
         JLabel nt = new JLabel();
         nt.setBounds(60, 650, 500, 20);
         nt.setFont(label3);
-        nt.setText("<html><u>Note: Kindly double check your infotmation. All fiedls with '*' are required.</u></html>");
+        nt.setText("<html><u>Note: Kindly double check your information. All fields with '*' are required.</u></html>");
         personal.add(nt);
 
         JButton bck = new JButton("Back to Log In");

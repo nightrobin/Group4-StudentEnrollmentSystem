@@ -27,6 +27,8 @@ public class login{
         topPanel.setBackground(Color.WHITE);
         f.add(topPanel);
 
+        Font label2 = new Font("Dialog", Font.PLAIN, 15);
+
         JLabel loginText = new JLabel("LOGIN");
         loginText.setBounds(1000, 110, 450, 70);
         loginText.setForeground(Color.decode("#47597e"));
@@ -41,6 +43,7 @@ public class login{
 
         JTextField SNField = new JTextField();
         SNField.setBounds(900, 240, 300, 30 );
+        SNField.setFont(label2);
         f.add(SNField);
 
         JLabel PWlabel = new JLabel("Password:");
@@ -51,6 +54,7 @@ public class login{
 
         JPasswordField PWField = new JPasswordField();
         PWField.setBounds(900, 320, 300, 30 );
+        SNField.setFont(label2);
         f.add(PWField);
 
 
@@ -98,29 +102,6 @@ public class login{
             }
         });
 
-
-        /*JButton registerButton = new JButton("REGISTER");
-        registerButton.setBounds(900, 420, 300, 30);
-        f.add(registerButton);
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new perInfo();
-                f.dispose();
-            }
-        });
-
-        JButton resultButton = new JButton("CHECK RESULTS");
-        resultButton.setBounds(900, 460, 300, 30);
-        f.add(resultButton);
-        resultButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new result();
-                f.dispose();
-            }
-        });*/
-
         JLabel note = new JLabel("<html> <center> <i> Note: For new students, click</i> </center> </html", SwingConstants.CENTER);
         note.setBounds(880, 520, 300, 40);
         note.setFont(new Font("Sans", Font.PLAIN, 15));
@@ -134,7 +115,7 @@ public class login{
         newStudent.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new result();
+                new perInfo();
                 f.dispose();
             }
 

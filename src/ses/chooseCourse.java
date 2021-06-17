@@ -298,7 +298,7 @@ public class chooseCourse {
 
                             JOptionPane.showMessageDialog(null, "Application Submitted");
 
-                            new login();
+                            new result();
                             en.dispose();
 
                         } catch (ClassNotFoundException | SQLException classNotFoundException) {
