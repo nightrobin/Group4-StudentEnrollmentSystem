@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.*;
 
 public class login{
@@ -14,6 +16,11 @@ public class login{
         f = new JFrame("Enrollment System");
         JPanel mainPanel = new JPanel();
         mainPanel.setBounds(0,0,1280,720);
+
+        JLabel header = new JLabel();
+        header.setBounds(0, 0, 720, 80);
+        header.setIcon(new ImageIcon("src/ses/header.png"));
+        f.add(header);
 
         JPanel topPanel = new JPanel();
         topPanel.setBounds(0,0,1280,70);
@@ -48,15 +55,11 @@ public class login{
 
 
         JButton loginButton = new JButton("LOGIN");
-        loginButton.setBounds(900, 380, 300, 30);
+        loginButton.setBounds(900, 380, 300, 40);
+        loginButton.setFont(new Font("Sans", Font.BOLD, 15));
+        loginButton.setBackground(Color.decode("#47597e"));
+        loginButton.setForeground(Color.WHITE);
         f.add(loginButton);
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-
-            }
-        });
-
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -93,7 +96,7 @@ public class login{
         });
 
 
-        JButton registerButton = new JButton("REGISTER");
+        /*JButton registerButton = new JButton("REGISTER");
         registerButton.setBounds(900, 420, 300, 30);
         f.add(registerButton);
         registerButton.addActionListener(new ActionListener() {
@@ -113,30 +116,42 @@ public class login{
                 new result();
                 f.dispose();
             }
+        });*/
+
+        JLabel note = new JLabel("<html> <center> <i> Note: For new students, click</i> </center> </html", SwingConstants.CENTER);
+        note.setBounds(880, 520, 300, 40);
+        note.setFont(new Font("Sans", Font.PLAIN, 15));
+        f.add(note);
+
+        JLabel newStudent = new JLabel("<html> <center> <i> <u>here.</u> </i> </center> </html");
+        newStudent.setBounds(1130, 525, 300, 30);
+        newStudent.setFont(new Font("Sans", Font.BOLD, 15));
+        newStudent.setForeground(Color.decode("#293b5f"));
+        f.add(newStudent);
+        newStudent.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new result();
+                f.dispose();
+            }
+
         });
 
 
-        JLabel note = new JLabel("<html> <center> <i> <u> Note: New students are required to register first.</u> </i> </center> </html", SwingConstants.CENTER);
-        note.setBounds(900, 500, 300, 40);
-        note.setFont(new Font("Sans", Font.PLAIN, 13));
-        f.add(note);
-
-
-        JLabel enrolled = new JLabel("<html><center> Now Accepting SY 2020-2021 Enrollees!</center></html> ");
-        enrolled.setBounds(200, 70, 700, 150);
-        enrolled.setForeground(Color.WHITE);
-        enrolled.setFont(new Font("Sans", Font.BOLD, 25));
-        f.add(enrolled);
-
-        JPanel rightPanel = new JPanel();
-        rightPanel.setBounds(20,100, 840, 540);
-        rightPanel.setBackground(Color.decode("#293b5f"));
-        f.add(rightPanel);
+        JLabel loginPic = new JLabel();
+        loginPic.setBounds(20,100, 840, 540);
+        loginPic.setIcon(new ImageIcon("src/ses/loginPic.png"));
+        f.add(loginPic);
 
         JPanel leftPanel = new JPanel();
-        leftPanel.setBounds(840,100, 400, 540);
-        leftPanel.setBackground(Color.white);
+        leftPanel.setBounds(20,100, 840, 540);
+        leftPanel.setBackground(Color.decode("#293b5f"));
         f.add(leftPanel);
+
+        JPanel rightPanel = new JPanel();
+        rightPanel.setBounds(840,100, 400, 540);
+        rightPanel.setBackground(Color.white);
+        f.add(rightPanel);
 
         f.add(mainPanel);
         f.setSize(1280,720);

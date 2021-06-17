@@ -5,46 +5,60 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-import java.util.Locale;
 
-public class result {
-    JFrame r = new JFrame();
+public class result{
 
-    public result() {
+    JFrame f = new JFrame();
 
-        r.setSize(640, 360);
-        r.setLayout(null);
-        r.setResizable(false);
-        r.setLocationRelativeTo(null);
+
+    public result(){
+        f = new JFrame("Enrollment System");
+
+        JLabel header = new JLabel();
+        header.setBounds(0, 0, 720, 80);
+        header.setIcon(new ImageIcon("src/ses/header.png"));
+        f.add(header);
+
+        JPanel topPanel = new JPanel();
+        topPanel.setBounds(0,0,1280,70);
+        topPanel.setBackground(Color.WHITE);
+        f.add(topPanel);
 
         Font label1 = new Font("Serif", Font.BOLD, 20);
         Font label2 = new Font("SansSerif", Font.PLAIN, 17);
         Font label3  = new Font("SansSerif", Font.ITALIC, 15);
 
-        JLabel pa = new JLabel("PASSERS");
-        pa.setBounds(20, 10, 300, 30);
-        pa.setFont(label1);
+        JLabel loginText = new JLabel("PASSERS");
+        loginText.setBounds(990, 110, 450, 70);
+        loginText.setForeground(Color.decode("#47597e"));
+        loginText.setFont(new Font("Sans", Font.BOLD, 30));
+        f.add(loginText);
 
-        JLabel ex = new JLabel("ENTER LRN TO CHECK RESULTS");
-        ex.setBounds(160, 50, 300, 25);
-        ex.setFont(label2);
+        JLabel LRNlabel = new JLabel("Enter your LRN:");
+        LRNlabel.setBounds(900, 180, 200, 70);
+        LRNlabel.setFont(new Font("Sans", Font.BOLD, 15));
+        LRNlabel.setForeground(Color.decode("#293b5f"));
+        f.add(LRNlabel);
 
         JTextField n = new JTextField();
-        n.setBounds(150, 80, 300, 30);
+        n.setBounds(900, 240, 190, 30 );
         n.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
         n.setFont(label2);
+        f.add(n);
 
-        JButton c = new JButton("Search");
-        c.setBounds(475, 80, 100, 30);
-        c.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
-        c.setBackground(Color.decode("#cdc7be"));
-        c.setFont(label2);
+        JButton searchBtn = new JButton("Search");
+        searchBtn.setBounds(1100, 240, 100, 30);
+        searchBtn.setFont(new Font("Sans", Font.BOLD, 15));
+        searchBtn.setBackground(Color.decode("#B2AB8C"));
+        searchBtn.setForeground(Color.WHITE);
+        f.add(searchBtn);
+
 
         ButtonGroup c1 = new ButtonGroup();
-        c1.add(c);
+        c1.add(searchBtn);
 
 
-        c.addActionListener(new ActionListener() {
+        searchBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -72,37 +86,37 @@ public class result {
                                 String neym = rs.getString("lastname") + ", " + rs.getString("firstname") + " " + rs.getString("middlename");
 
                                 JLabel nem = new JLabel(neym);
-                                nem.setBounds(150, 130, 350, 25);
+                                nem.setBounds(900, 280, 350, 25);
                                 nem.setFont(label2);
                                 neym.toUpperCase();
                                 nem.setVisible(false);
-                                r.add(nem);
+                                f.add(nem);
 
                                 JLabel nt = new JLabel();
-                                nt.setBounds(250, 160, 500, 25);
+                                nt.setBounds(1000, 320, 500, 25);
                                 nt.setText("<html><u>Sample Email</u></html>");
-                                nt.setFont(label3);
+                                nt.setFont(new Font("SansSerif", Font.PLAIN, 15));
                                 nt.setVisible(false);
-                                r.add(nt);
+                                f.add(nt);
 
                                 JLabel un = new JLabel("STUDENT ID: " + rs.getString("studID"));
-                                un.setBounds(200, 180, 350, 25);
+                                un.setBounds(900, 360, 350, 25);
                                 un.setFont(label2);
                                 un.setVisible(false);
-                                r.add(un);
+                                f.add(un);
 
                                 JLabel ps = new JLabel("PASSWORD: " + rs.getString("password"));
-                                ps.setBounds(200, 210, 350, 25);
+                                ps.setBounds(900, 400, 350, 25);
                                 ps.setFont(label2);
                                 ps.setVisible(false);
-                                r.add(ps);
+                                f.add(ps);
 
                                 JLabel ntt = new JLabel();
-                                ntt.setBounds(150, 240, 500, 25);
+                                ntt.setBounds(900, 450, 500, 25);
                                 ntt.setText("<html><u>We advise to change your password upon logging in.</u></html>");
-                                ntt.setFont(label3);
+                                ntt.setFont(new Font("SansSerif", Font.ITALIC, 13));
                                 ntt.setVisible(false);
-                                r.add(ntt);
+                                f.add(ntt);
 
                                 nem.setVisible(true);
                                 nt.setVisible(true);
@@ -112,10 +126,10 @@ public class result {
 
                             } else {
                                 JLabel sor = new JLabel("Sorry, no record found.");
-                                sor.setBounds(250, 150, 350, 25);
+                                sor.setBounds(900, 150, 350, 25);
                                 sor.setFont(label2);
                                 sor.setVisible(false);
-                                r.add(sor);
+                                f.add(sor);
                                 sor.setVisible(true);
 
                                 c1.clearSelection();
@@ -132,45 +146,72 @@ public class result {
         });
 
 
-        JButton bck = new JButton("Back to Log In");
-        bck.setBounds(475, 280, 150, 30);
-        bck.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
-        bck.setBackground(Color.decode("#cdc7be"));
-        bck.setFont(label2);
+        JButton registerBtn = new JButton("Register");
+        registerBtn.setBounds(900, 515, 300, 35);
+        registerBtn.setFont(new Font("Sans", Font.BOLD, 15));
+        registerBtn.setBackground(Color.decode("#47597e"));
+        registerBtn.setForeground(Color.WHITE);
+        f.add(registerBtn);
+            registerBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new perInfo();
+                    f.dispose();
+                }
+            });
 
-        bck.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new login();
-                r.dispose();
-            }
-        });
+        JButton clearBtn = new JButton("Clear");
+        clearBtn.setBounds(900, 570, 130, 35);
+        clearBtn.setFont(new Font("Sans", Font.BOLD, 15));
+        clearBtn.setBackground(Color.decode("#DBE6FD"));
+        clearBtn.setForeground(Color.decode("#293B5F"));
+        f.add(clearBtn);
+            clearBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new result();
+                    f.dispose();
+                }
+            });
 
-        JButton clr = new JButton("Clear Fields");
-        clr.setBounds(20, 280, 150, 30);
-        clr.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
-        clr.setBackground(Color.decode("#cdc7be"));
-        clr.setFont(label2);
+        JButton backBtn = new JButton("Back to login");
+        backBtn.setBounds(1070, 570, 130, 35);
+        backBtn.setFont(new Font("Sans", Font.BOLD, 15));
+        backBtn.setBackground(Color.decode("#BDBE6FD"));
+        backBtn.setForeground(Color.decode("#293B5F"));
+        f.add(backBtn);
+            backBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new login();
+                    f.dispose();
+                }
+            });
 
-        clr.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new result();
-                r.dispose();
-            }
-        });
 
-        r.add(pa);
-        r.add(ex);
-        r.add(n);
-        r.add(c);
-        r.add(bck);
-        r.add(clr);
-        r.setVisible(true);
+        JLabel loginPic = new JLabel();
+        loginPic.setBounds(20,100, 840, 540);
+        loginPic.setIcon(new ImageIcon("src/ses/loginPic.png"));
+        f.add(loginPic);
+
+        JPanel leftPanel = new JPanel();
+        leftPanel.setBounds(20,100, 840, 540);
+        leftPanel.setBackground(Color.decode("#293b5f"));
+
+
+
+
+
+        f.add(leftPanel);
+        f.setSize(1280,720);
+        f.setLayout(null);
+        f.setVisible(true);
+        f.setLocationRelativeTo(null);
+        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-
-    public static void main(String[] args) {
+    public static void main(String args[])
+    {
         new result();
     }
 }

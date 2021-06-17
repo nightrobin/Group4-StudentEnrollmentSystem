@@ -51,6 +51,11 @@ public class regForm {
         topPanel.setBounds(270,0,1280,70);
         topPanel.setBackground(Color.WHITE);
 
+        JLabel header = new JLabel();
+        header.setBounds(275, 0, 720, 80);
+        header.setIcon(new ImageIcon("src/ses/header.png"));
+        f.add(header);
+
         JLabel user = new JLabel("Logged in as Student No. " +sid);
         user.setBounds(1040, 0, 300, 30);
         f.add(user);
