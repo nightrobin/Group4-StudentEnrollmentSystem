@@ -27,6 +27,8 @@ public class login{
         topPanel.setBackground(Color.WHITE);
         f.add(topPanel);
 
+        Font label2 = new Font("Dialog", Font.PLAIN, 15);
+
         JLabel loginText = new JLabel("LOGIN");
         loginText.setBounds(1000, 110, 450, 70);
         loginText.setForeground(Color.decode("#47597e"));
@@ -41,6 +43,7 @@ public class login{
 
         JTextField SNField = new JTextField();
         SNField.setBounds(900, 240, 300, 30 );
+        SNField.setFont(label2);
         f.add(SNField);
 
         JLabel PWlabel = new JLabel("Password:");
@@ -51,6 +54,7 @@ public class login{
 
         JPasswordField PWField = new JPasswordField();
         PWField.setBounds(900, 320, 300, 30 );
+        SNField.setFont(label2);
         f.add(PWField);
 
 

@@ -16,14 +16,6 @@ public class logIntabs {
         Font label1 = new Font("Monospaced", Font.BOLD, 50);
         Font label2 = new Font("Dialog", Font.BOLD, 13);
 
-        JPanel h = new JPanel();
-        h.setBounds(0,0,1280,50);
-        h.setBackground(Color.WHITE);
-
-        JLabel user = new JLabel("Logged in as Student No. " + sid);
-        user.setBounds(10, 2, 300, 30);
-        user.setFont(label2);
-
         JLabel header = new JLabel();
         header.setBounds(0, 0, 720, 80);
         header.setIcon(new ImageIcon("src/ses/header.png"));
@@ -33,6 +25,10 @@ public class logIntabs {
         topPanel.setBounds(0,0,1280,70);
         topPanel.setBackground(Color.WHITE);
         lt.add(topPanel);
+
+        JLabel user = new JLabel("Logged in as Student No. " +sid);
+        user.setBounds(1040, 0, 300, 30);
+
 
         JButton info = new JButton("STUDENT INFORMATION");
         info.setBounds(0, 100, 1280, 215);
@@ -75,7 +71,7 @@ public class logIntabs {
         });
 
         lt.add(user);
-        lt.add(h);
+        lt.add(topPanel);
         lt.setVisible(true);
     }
 
