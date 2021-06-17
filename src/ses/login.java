@@ -67,8 +67,11 @@ public class login{
                 String sid = SNField.getText();
                 String ps = PWField.getText();
 
+
                 if (sid.isEmpty() || ps.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Required Field/s is/are Empty.");
+                } else if(sid.length() <= 5) {
+                    JOptionPane.showMessageDialog(null, "Invalid Student Number.");
                 }
                 else {
                     Connection con1;
