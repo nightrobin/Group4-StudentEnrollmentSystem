@@ -117,13 +117,18 @@ public class login{
             }
         });
 
-        JLabel note = new JLabel("<html> <center> <i> Note: For new students, click</i> </center> </html", SwingConstants.CENTER);
+        JLabel note1 = new JLabel("<html> <center> <i> Note: New Students are required to register first.</i> </center> </html", SwingConstants.CENTER);
+        note1.setBounds(880, 490, 350, 40);
+        note1.setFont(new Font("Sans", Font.PLAIN, 15));
+        f.add(note1);
+
+        JLabel note = new JLabel("<html> <center> <i> To register/apply, click</i> </center> </html", SwingConstants.CENTER);
         note.setBounds(880, 520, 300, 40);
         note.setFont(new Font("Sans", Font.PLAIN, 15));
         f.add(note);
 
         JLabel newStudent = new JLabel("<html> <center> <i> <u>here.</u> </i> </center> </html");
-        newStudent.setBounds(1130, 525, 300, 30);
+        newStudent.setBounds(1110, 525, 300, 30);
         newStudent.setFont(new Font("Sans", Font.BOLD, 15));
         newStudent.setForeground(Color.decode("#293b5f"));
         f.add(newStudent);
