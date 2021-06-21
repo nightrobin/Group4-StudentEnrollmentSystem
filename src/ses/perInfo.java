@@ -383,9 +383,6 @@ public class perInfo {
             else if (fl.isSelected()){
                 sexx = "Female";
             }
-            else {
-                JOptionPane.showMessageDialog(null, "Required Field/s is/are empty");
-            }
             String sex1 = sexx;
             String dbb = db.getText();
             String bpp = add1.getText();
@@ -413,8 +410,6 @@ public class perInfo {
                 categg = "ALS";
             }else if (wbg.isSelected()){
                 categg = "With College Background";
-            } else {
-                JOptionPane.showMessageDialog(null, "Required Field/s is/are empty");
             }
             String categ1 = categg;
             String cat1 = String.valueOf(lsa1.getSelectedItem());
