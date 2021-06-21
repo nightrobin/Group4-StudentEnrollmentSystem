@@ -13,7 +13,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
 public class perInfo {
 
 
-    private JFrame personal = new JFrame("Personal Information");
+    private JFrame personal = new JFrame("Register/ Apply");
 
     public perInfo(){
         personal.setSize(1280, 720);

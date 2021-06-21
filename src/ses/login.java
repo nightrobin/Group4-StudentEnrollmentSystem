@@ -102,6 +102,21 @@ public class login{
             }
         });
 
+        JButton result = new JButton("CHECK RESULTS");
+        result.setBounds(900, 425, 300, 40);
+        result.setFont(new Font("Sans", Font.BOLD, 15));
+        result.setBackground(Color.decode("#47597e"));
+        result.setForeground(Color.WHITE);
+        f.add(result);
+
+        result.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new result();
+                f.dispose();
+            }
+        });
+
         JLabel note = new JLabel("<html> <center> <i> Note: For new students, click</i> </center> </html", SwingConstants.CENTER);
         note.setBounds(880, 520, 300, 40);
         note.setFont(new Font("Sans", Font.PLAIN, 15));
