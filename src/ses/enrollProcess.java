@@ -202,7 +202,7 @@ public class enrollProcess extends JFrame{
         enrolled.setFont(new Font("Sans", Font.BOLD, 30));
         f.add(enrolled);
 
-        JLabel statement1 = new JLabel("Start of Class will be on March 15, 2021", SwingConstants.CENTER);
+        JLabel statement1 = new JLabel("Start of Class will be on March 15, 2020", SwingConstants.CENTER);
         statement1.setBounds(582, 300, 400, 100);
         statement1.setForeground(Color.WHITE);
         statement1.setFont(new Font("Serif", Font.PLAIN, 17));

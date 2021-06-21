@@ -173,7 +173,7 @@ public class perInfo {
         rel.setBounds(40, 270, 100, 25);
 
         JTextField rel1 = new JTextField();
-        rel1.setBounds(300, 270, 300, 25);
+        rel1.setBounds(300, 270, 300, 30);
         rel1.setFont(label2);
         rel1.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY,1));
 

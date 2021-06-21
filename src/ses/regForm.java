@@ -183,7 +183,7 @@ public class regForm {
                 h3.setFont(l4);
                 f.add(h3);
 
-                JLabel h4 = new JLabel("2021-2022");
+                JLabel h4 = new JLabel("2020-2021");
                 h4.setBounds(865, 140, 100, 25);
                 h4.setFont(l2);
                 f.add(h4);
